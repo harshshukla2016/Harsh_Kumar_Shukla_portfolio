@@ -55,6 +55,7 @@ const SEO = () => {
             <meta name="author" content="Harsh Kumar Shukla" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <link rel="canonical" href={siteUrl} />
+            <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
 
             {/* Open Graph / Facebook */}
             <meta property="og:type" content="website" />
