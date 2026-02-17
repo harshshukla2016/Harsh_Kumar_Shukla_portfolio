@@ -33,7 +33,7 @@ const About = () => {
                         {/* GitHub Stats */}
                         <div className="py-4">
                             <img
-                                src="https://github-readme-stats.vercel.app/api?username=harshshukla2016&show_icons=true&theme=dark&bg_color=00000000&hide_border=true&title_color=00f3ff&text_color=9ca3af&icon_color=d946ef"
+                                src="https://github-readme-stats.vercel.app/api?username=harshshukla2016&show_icons=true&theme=radical&hide_border=true"
                                 alt="GitHub Stats"
                                 className="w-full max-w-md"
                             />

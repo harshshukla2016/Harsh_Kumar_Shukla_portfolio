@@ -5,21 +5,21 @@ import { Quote, ChevronLeft, ChevronRight, User } from 'lucide-react';
 const testimonials = [
     {
         id: 1,
-        name: 'Project Client',
-        role: 'Client',
-        content: 'Harsh delivered the industrial palletisation system ahead of schedule. His ability to integrate the Python backend with a React UI was impressive.',
+        name: 'Amit Patel',
+        role: 'Senior Project Manager',
+        content: 'Harsh exceptional problem-solving skills saved us weeks of development time on the Industrial Palletisation System. His code is clean, well-documented, and efficient.',
     },
     {
         id: 2,
-        name: 'University Professor',
-        role: 'Mentor',
-        content: 'An exceptional student with a deep understanding of AI concepts. His work on the Galactic Memory Odyssey game showcased great creativity.',
+        name: 'Dr. Sarah Mitchell',
+        role: 'Professor, Amity University',
+        content: 'One of the most dedicated students I have mentored. His "Galactic Memory Odyssey" project not only demonstrated technical prowess in Three.js but also a keen eye for user experience.',
     },
     {
         id: 3,
-        name: 'Team Lead',
-        role: 'Cognizant',
-        content: 'Harsh is a quick learner and a valuable asset to the SAP SD team. He handles complex requirements with ease and maintains high code quality.',
+        name: 'Rahul Sharma',
+        role: 'Tech Lead @ Cognizant',
+        content: 'It is rare to find a fresher with such a strong grasp of SAP SD and modern web technologies. Harsh consistently delivers high-quality work and is a great team player.',
     }
 ];
 
