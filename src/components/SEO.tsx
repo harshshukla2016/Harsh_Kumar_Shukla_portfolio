@@ -2,23 +2,22 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
 const SEO = () => {
-    const siteTitle = "Harsh Kumar Shukla | SAP SD Consultant & Software Engineer";
-    const siteDescription = "Harsh Kumar Shukla is a top-rated SAP SD Consultant and Software Engineer in India (Delhi/NCR). Specializing in SAP Sales & Distribution, React.js, Python, and AI/ML via MCA from Amity University. Explore his portfolio for projects and expertise.";
-    const siteUrl = "https://harshshukla.com"; // Ideally replace with actual domain
-    const siteImage = "/og-image.png"; // Placeholder path
+    const siteTitle = "Harsh Kumar Shukla | SAP SD Consultant, Full Stack Developer & AI Engineer";
+    const siteDescription = "Expert SAP SD Consultant and Full Stack Developer (React.js, Python) based in India. Specializing in Enterprise ERP Solutions, AI/ML Integrations, and Modern Web Applications. View projects and experience.";
+    const siteUrl = "https://harsh-kumar-shukla-portfolio.vercel.app";
+    const siteImage = "https://harsh-kumar-shukla-portfolio.vercel.app/og-image.png";
 
     const jsonLd = {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Harsh Kumar Shukla",
         "url": siteUrl,
-        "image": `${siteUrl}${siteImage}`,
+        "image": siteImage,
         "sameAs": [
             "https://www.linkedin.com/in/harsh-kumar-shukla-a42aa4138",
-            "https://github.com/harshshukla2016",
-            "https://twitter.com/harshshukla2016" // Example if exists
+            "https://github.com/harshshukla2016"
         ],
-        "jobTitle": ["SAP SD Consultant", "Software Engineer"],
+        "jobTitle": ["SAP SD Consultant", "Software Engineer", "Full Stack Developer"],
         "worksFor": {
             "@type": "Organization",
             "name": "Cognizant"
@@ -47,7 +46,7 @@ const SEO = () => {
             {/* Basic Meta Tags */}
             <title>{siteTitle}</title>
             <meta name="description" content={siteDescription} />
-            <meta name="keywords" content="Harsh Kumar Shukla, SAP SD Consultant, Software Engineer, React Developer, AI/ML Specialist, India, Delhi, Kanpur, Uttar Pradesh, SAP Implementation, Web Development, Portfolio" />
+            <meta name="keywords" content="Harsh Kumar Shukla, SAP SD Consultant, Full Stack Developer, React.js Expert, Python Developer, AI Engineer, Machine Learning, Cognizant, Portfolio, Web Development, Software Engineer India, Kanpur, Freelance Developer" />
             <meta name="author" content="Harsh Kumar Shukla" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <link rel="canonical" href={siteUrl} />
