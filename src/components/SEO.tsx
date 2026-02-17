@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 const SEO = () => {
     const siteTitle = "Harsh Kumar Shukla | SAP SD Consultant, Full Stack Developer & AI Engineer";
     const siteDescription = "Expert SAP SD Consultant and Full Stack Developer based in India. Specializing in Enterprise ERP & Modern Web Apps. Available for projects in Bangalore, Hyderabad, Pune, Chennai, Mumbai, Delhi NCR, Gurgaon, Noida, and Remote.";
-    const siteUrl = "https://harsh-kumar-shukla-portfolio.vercel.app";
+    const siteUrl = "https://harsh-kumar-shukla-portfolio.vercel.app/";
     const siteImage = "https://harsh-kumar-shukla-portfolio.vercel.app/og-image.png";
 
     const jsonLd = {
