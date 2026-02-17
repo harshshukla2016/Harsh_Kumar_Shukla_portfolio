@@ -26,9 +26,19 @@ const About = () => {
                         className="space-y-6 text-lg text-gray-300 leading-relaxed font-light"
                     >
                         <p>
-                            I am a passionate <span className="text-primary font-semibold">Software Engineer</span> and <span className="text-secondary font-semibold">SAP SD Consultant</span> with a strong foundation in Computer Applications.
+                            I am a passionate <span className="text-primary font-semibold">Software Engineer</span> and <span className="text-secondary font-semibold">SAP SD Consultant</span> with a strong foundation in Compute Applications.
                             Currently pursuing my <span className="text-white font-medium">Master of Computer Applications (MCA)</span> in Artificial Intelligence and Machine Learning from Amity University while working at <span className="text-white font-medium">Cognizant</span>.
                         </p>
+
+                        {/* GitHub Stats */}
+                        <div className="py-4">
+                            <img
+                                src="https://github-readme-stats.vercel.app/api?username=harshshukla2016&show_icons=true&theme=dark&bg_color=00000000&hide_border=true&title_color=00f3ff&text_color=9ca3af&icon_color=d946ef"
+                                alt="GitHub Stats"
+                                className="w-full max-w-md"
+                            />
+                        </div>
+
                         <p>
                             My journey began with a BCA from Dr. Virendra Swaroop Institute, where I developed robust analytical skills. I have hands-on experience in full-stack development, database management, and industrial automation systems.
                         </p>

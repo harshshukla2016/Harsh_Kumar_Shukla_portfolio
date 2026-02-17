@@ -7,8 +7,11 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Education from './components/Education';
 import Referrals from './components/Referrals';
+import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import SEO from './components/SEO';
+import Terminal from './components/Terminal';
+import Support from './components/Support';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -40,6 +43,11 @@ function App() {
       <Projects />
       <Education />
       <Referrals />
+      <Testimonials />
+      <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-4 pointer-events-none"> {/* Pointer events none to allow clicks through container, re-enable on children if needed */}
+        <div className="pointer-events-auto"><Support /></div>
+        <div className="pointer-events-auto"><Terminal /></div>
+      </div>
       <Contact />
     </div>
   );
