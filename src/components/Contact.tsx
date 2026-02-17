@@ -1,8 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, Linkedin, Github, Send } from 'lucide-react';
 
 const Contact = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: ''
+    });
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        const { name, email, message } = formData;
+
+        // Construct mailto link
+        const subject = `Portfolio Contact from ${name}`;
+        const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+
+        window.location.href = `mailto:harshshukla2016@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+    };
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setFormData({
+            ...formData,
+            [e.target.id]: e.target.value
+        });
+    };
+
     return (
         <section id="contact" className="py-20 bg-background text-gray-100 relative overflow-hidden">
             <div className="container mx-auto px-6 relative z-10">
@@ -65,14 +89,17 @@ const Contact = () => {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="glass p-8 rounded-2xl border border-gray-800 relative"
                     >
-                        <form className="space-y-6">
+                        <form className="space-y-6" onSubmit={handleSubmit}>
                             <div>
                                 <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-2">Name</label>
                                 <input
                                     type="text"
                                     id="name"
+                                    value={formData.name}
+                                    onChange={handleChange}
                                     className="w-full bg-white/5 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors"
                                     placeholder="Your Name"
+                                    required
                                 />
                             </div>
                             <div>
@@ -80,8 +107,11 @@ const Contact = () => {
                                 <input
                                     type="email"
                                     id="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
                                     className="w-full bg-white/5 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors"
                                     placeholder="your@email.com"
+                                    required
                                 />
                             </div>
                             <div>
@@ -89,12 +119,15 @@ const Contact = () => {
                                 <textarea
                                     id="message"
                                     rows={4}
+                                    value={formData.message}
+                                    onChange={handleChange}
                                     className="w-full bg-white/5 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary transition-colors"
                                     placeholder="Your message..."
+                                    required
                                 />
                             </div>
                             <button
-                                type="button"
+                                type="submit"
                                 className="w-full bg-primary text-black font-bold py-3 px-6 rounded-lg hover:bg-opacity-90 transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-cyan-500/50 flex items-center justify-center gap-2"
                             >
                                 <Send size={18} />

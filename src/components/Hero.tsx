@@ -4,6 +4,7 @@ import { Stars, Sparkles, Float } from '@react-three/drei';
 import { motion } from 'framer-motion';
 import * as THREE from 'three';
 import profileImg from '../assets/profile_transparent.png';
+import resumePdf from '../assets/Harsh_Kumar_Shukla_Resume_fresher.pdf';
 
 // Reusable geometry to avoid recreation
 const particleGeometry = new THREE.OctahedronGeometry(0.2, 0);
@@ -163,8 +164,8 @@ const Hero = () => {
                             CONTACT ME
                         </a>
                         <a
-                            href="/resume.pdf"
-                            download
+                            href={resumePdf}
+                            download="Harsh_Kumar_Shukla_Resume.pdf"
                             className="px-8 py-3 rounded-full bg-transparent border border-secondary text-secondary hover:bg-secondary hover:text-black transition-all duration-300 neon-glow font-bold tracking-wide"
                         >
                             GET RESUME
