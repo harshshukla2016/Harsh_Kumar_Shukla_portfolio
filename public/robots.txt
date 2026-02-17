@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://harshshukla.com/sitemap.xml
+Sitemap: https://harsh-kumar-shukla-portfolio.vercel.app/sitemap.xml
