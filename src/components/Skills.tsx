@@ -66,6 +66,30 @@ const Skills = () => {
                         </motion.div>
                     ))}
                 </div>
+
+                <div className="mt-20 overflow-hidden relative">
+                    <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-surface to-transparent z-10"></div>
+                    <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-surface to-transparent z-10"></div>
+
+                    <motion.div
+                        className="flex space-x-12 whitespace-nowrap"
+                        animate={{ x: [0, -1000] }}
+                        transition={{
+                            repeat: Infinity,
+                            duration: 20,
+                            ease: "linear"
+                        }}
+                    >
+                        {[...skills, ...skills, ...skills].flatMap((group, groupIndex) =>
+                            group.items.map((item, itemIndex) => (
+                                <div key={`${groupIndex}-${itemIndex}`} className="flex items-center space-x-2 text-gray-400 opacity-50 hover:opacity-100 transition-opacity">
+                                    <span className="text-xl font-display font-bold">{item}</span>
+                                    <span className="text-primary">•</span>
+                                </div>
+                            ))
+                        )}
+                    </motion.div>
+                </div>
             </div>
         </section>
     );

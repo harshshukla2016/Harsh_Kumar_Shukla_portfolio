@@ -8,6 +8,7 @@ import Projects from './components/Projects';
 import Education from './components/Education';
 import Contact from './components/Contact';
 import SEO from './components/SEO';
+import Cursor from './components/Cursor';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -30,6 +31,7 @@ function App() {
 
   return (
     <div className="bg-background min-h-screen text-white overflow-x-hidden selection:bg-primary selection:text-black">
+      <Cursor />
       <SEO />
       <Navbar />
       <Hero />
