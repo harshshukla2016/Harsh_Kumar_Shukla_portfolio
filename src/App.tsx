@@ -6,6 +6,7 @@ import Experience from './components/Experience';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Education from './components/Education';
+import Referrals from './components/Referrals';
 import Contact from './components/Contact';
 import SEO from './components/SEO';
 
@@ -38,6 +39,7 @@ function App() {
       <Skills />
       <Projects />
       <Education />
+      <Referrals />
       <Contact />
     </div>
   );
