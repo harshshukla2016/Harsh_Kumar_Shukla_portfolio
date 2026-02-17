@@ -8,7 +8,7 @@ const Support = () => {
     const handlePayment = (amount: number) => {
         // UPI Deep Link Logic
         // TODO: Replace 'your-upi-id@okicici' with your actual UPI ID (VPA)
-        const vpa = 'shivambika@okicici';
+        const vpa = '9569808478@upi';
         const name = 'Harsh Kumar Shukla';
         const transactionNote = 'Portfolio Support';
 
