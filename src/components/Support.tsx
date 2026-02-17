@@ -80,7 +80,7 @@ const Support = () => {
                 title="Support My Work"
             >
                 <div className="absolute right-14 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap text-secondary text-sm font-bold bg-black/80 px-2 py-1 rounded border border-gray-800 pointer-events-none">
-                    Support / UPI
+                    Support
                 </div>
                 <Heart size={24} className={`text-secondary ${isOpen ? 'fill-secondary' : ''}`} />
             </button>
