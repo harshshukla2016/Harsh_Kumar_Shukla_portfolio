@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 
 const SEO = () => {
     const siteTitle = "Harsh Kumar Shukla | SAP SD Consultant, Full Stack Developer & AI Engineer";
-    const siteDescription = "Expert SAP SD Consultant and Full Stack Developer (React.js, Python) based in India. Specializing in Enterprise ERP Solutions, AI/ML Integrations, and Modern Web Applications. View projects and experience.";
+    const siteDescription = "Expert SAP SD Consultant and Full Stack Developer based in India. Specializing in Enterprise ERP & Modern Web Apps. Available for projects in Bangalore, Hyderabad, Pune, Chennai, Mumbai, Delhi NCR, Gurgaon, Noida, and Remote.";
     const siteUrl = "https://harsh-kumar-shukla-portfolio.vercel.app";
     const siteImage = "https://harsh-kumar-shukla-portfolio.vercel.app/og-image.png";
 
@@ -38,6 +38,11 @@ const SEO = () => {
             "addressRegion": "Uttar Pradesh",
             "addressCountry": "India"
         },
+        "areaServed": [
+            "Bangalore", "Hyderabad", "Pune", "Chennai", "Mumbai",
+            "Delhi", "Gurgaon", "Noida", "NCR", "Ghaziabad", "Faridabad",
+            "Kolkata", "Ahmedabad", "Surat", "Jaipur", "Lucknow", "Kanpur", "Chandigarh", "Indore", "Remote"
+        ],
         "description": siteDescription
     };
 
@@ -46,7 +51,7 @@ const SEO = () => {
             {/* Basic Meta Tags */}
             <title>{siteTitle}</title>
             <meta name="description" content={siteDescription} />
-            <meta name="keywords" content="Harsh Kumar Shukla, SAP SD Consultant, Full Stack Developer, React.js Expert, Python Developer, AI Engineer, Machine Learning, Cognizant, Portfolio, Web Development, Software Engineer India, Kanpur, Freelance Developer" />
+            <meta name="keywords" content="Harsh Kumar Shukla, SAP SD Consultant, Full Stack Developer, React.js Expert, AI Engineer, Machine Learning, Cognizant, Portfolio, Web Development, Software Engineer India, Bangalore, Hyderabad, Pune, Chennai, Mumbai, Delhi NCR, Gurgaon, Noida, Ghaziabad, Faridabad, Kolkata, Ahmedabad, Surat, Jaipur, Lucknow, Kanpur, Chandigarh, Indore, Tier 1 Cities India, Remote Developer" />
             <meta name="author" content="Harsh Kumar Shukla" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <link rel="canonical" href={siteUrl} />
