@@ -35,6 +35,7 @@ const jobs: Job[] = [
 
 const Referrals = () => {
     const [selectedJob, setSelectedJob] = useState<Job | null>(null);
+    const [showAll, setShowAll] = useState(false);
 
     const handleApply = (job: Job) => {
         const subject = `Referral Request: ${job.title} (${job.id})`;
@@ -47,6 +48,8 @@ const Referrals = () => {
         const body = `Hi Harsh,%0D%0A%0D%0AI saw your portfolio and would like to connect for potential referral opportunities.%0D%0A%0D%0AMy Skills: [List Skills]%0D%0AMy LinkedIn: [Insert Link]%0D%0A%0D%0AThanks,`;
         window.location.href = `mailto:harshshukla2016@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
     };
+
+    const visibleJobs = showAll ? jobs : jobs.slice(0, 2); // Show 2 jobs initially
 
     return (
         <section id="referrals" className="py-20 bg-background text-gray-100 relative overflow-hidden">
@@ -65,9 +68,9 @@ const Referrals = () => {
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
                     {/* Job Cards */}
-                    {jobs.map((job, index) => (
+                    {visibleJobs.map((job, index) => (
                         <motion.div
                             key={job.id}
                             initial={{ opacity: 0, y: 20 }}
@@ -113,12 +116,17 @@ const Referrals = () => {
                         </motion.div>
                     ))}
 
-                    {/* General Referral Card */}
+                    {/* General Referral Card - Always Visible or conditional? Let's keep it visible at the end of the loaded checks, or always present? 
+                        Let's keep it always visible as the last element if we show all, OR just append it to the visible list.
+                        Actually, requirement implies hiding jobs. Let's append General Referral to the end of the LIST, so it's hidden too? 
+                        No, "General Referral" is distinct. Let's keep it as a separate card that is ALWAYS visible or part of the flow.
+                        Better UX: Show 'General Inquiry' card ALWAYS at the end of the grid.
+                    */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: jobs.length * 0.1 }}
+                        transition={{ delay: 0.2 }}
                         className="glass p-6 rounded-xl border border-gray-800 hover:border-secondary transition-all duration-300 group flex flex-col relative overflow-hidden"
                     >
                         <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/10 rounded-full blur-2xl -mr-16 -mt-16 pointer-events-none"></div>
@@ -145,6 +153,18 @@ const Referrals = () => {
                         </div>
                     </motion.div>
                 </div>
+
+                {/* View More Button */}
+                {jobs.length > 2 && (
+                    <div className="text-center">
+                        <button
+                            onClick={() => setShowAll(!showAll)}
+                            className="px-8 py-3 rounded-full bg-white/5 border border-primary/30 text-primary hover:bg-primary/10 transition-all duration-300"
+                        >
+                            {showAll ? 'Show Less' : 'View More Jobs'}
+                        </button>
+                    </div>
+                )}
             </div>
         </section>
     );
