@@ -139,6 +139,7 @@ const Contact = () => {
 
                 <div className="mt-20 text-center text-gray-500 text-sm">
                     <p>© {new Date().getFullYear()} Harsh Kumar Shukla. All rights reserved.</p>
+                    <p className="mt-2 text-xs">Designed with ❤️ by Harsh</p>
                 </div>
             </div>
         </section>
