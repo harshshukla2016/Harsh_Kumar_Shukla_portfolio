@@ -139,34 +139,34 @@ const Hero = () => {
                 </div>
             </motion.div>
 
-            <div className="container mx-auto px-6 relative z-20 flex flex-col md:flex-row items-start md:items-center h-full pointer-events-none pt-64 md:pt-0">
+            <div className="container mx-auto px-6 relative z-20 flex flex-col md:flex-row items-start md:items-center h-full pointer-events-none pt-48 md:pt-0">
 
                 {/* Text Content - Right Aligned (using ml-auto) */}
                 <motion.div
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="w-full md:w-1/2 md:ml-auto text-center md:text-left mt-12 md:mt-0 order-1 md:order-none pointer-events-auto"
+                    className="w-full md:w-1/2 md:ml-auto text-center md:text-left mt-8 md:mt-0 order-1 md:order-none pointer-events-auto"
                 >
-                    <h2 className="text-xl md:text-2xl text-primary font-mono tracking-wider mb-4">HELLO, I AM</h2>
-                    <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-6 text-gradient neon-text-cyan leading-tight">
+                    <h2 className="text-lg md:text-2xl text-primary font-mono tracking-wider mb-2 md:mb-4">HELLO, I AM</h2>
+                    <h1 className="text-4xl sm:text-5xl md:text-7xl font-display font-bold text-white mb-4 md:mb-6 text-gradient neon-text-cyan leading-tight">
                         Harsh Kumar<br />Shukla
                     </h1>
-                    <h3 className="text-2xl md:text-3xl text-gray-300 font-light mb-8">
-                        SAP SD Consultant & <span className="text-secondary font-semibold">Software Engineer</span>
+                    <h3 className="text-xl md:text-3xl text-gray-300 font-light mb-6 md:mb-8">
+                        SAP SD Consultant & <span className="text-secondary font-semibold block sm:inline">Software Engineer</span>
                     </h3>
 
-                    <div className="flex justify-center md:justify-start gap-6">
+                    <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
                         <a
                             href="#contact"
-                            className="px-8 py-3 rounded-full bg-transparent border border-primary text-primary hover:bg-primary hover:text-black transition-all duration-300 neon-glow font-bold tracking-wide"
+                            className="px-6 py-3 rounded-full bg-transparent border border-primary text-primary hover:bg-primary hover:text-black transition-all duration-300 neon-glow font-bold tracking-wide text-sm md:text-base"
                         >
                             CONTACT ME
                         </a>
                         <a
                             href={resumePdf}
                             download="Harsh_Kumar_Shukla_Resume.pdf"
-                            className="px-8 py-3 rounded-full bg-transparent border border-secondary text-secondary hover:bg-secondary hover:text-black transition-all duration-300 neon-glow font-bold tracking-wide"
+                            className="px-6 py-3 rounded-full bg-transparent border border-secondary text-secondary hover:bg-secondary hover:text-black transition-all duration-300 neon-glow font-bold tracking-wide text-sm md:text-base"
                         >
                             GET RESUME
                         </a>
