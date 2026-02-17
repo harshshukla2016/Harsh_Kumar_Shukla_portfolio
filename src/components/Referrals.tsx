@@ -10,6 +10,7 @@ interface Job {
     type: string;
     description: string;
     requirements: string[];
+    expiresAt: string; // YYYY-MM-DD
 }
 
 const jobs: Job[] = [
@@ -20,7 +21,8 @@ const jobs: Job[] = [
         location: 'Pune/Bangalore/Hybrid',
         type: 'Full-time',
         description: 'Looking for a skilled SAP SD Consultant with 2+ years of experience in OTC cycle, pricing, and master data.',
-        requirements: ['2+ years in SAP SD', 'Experience with S/4HANA is a plus', 'Strong communication skills']
+        requirements: ['2+ years in SAP SD', 'Experience with S/4HANA is a plus', 'Strong communication skills'],
+        expiresAt: '2026-12-31'
     },
     {
         id: 'SWE-002',
@@ -29,13 +31,57 @@ const jobs: Job[] = [
         location: 'Remote',
         type: 'Contract/Full-time',
         description: 'Seeking a frontend developer proficient in React, Tailwind CSS, and TypeScript for building modern web applications.',
-        requirements: ['Strong React & TypeScript skills', 'Experience with Tailwind CSS', 'Portfolio required']
+        requirements: ['Strong React & TypeScript skills', 'Experience with Tailwind CSS', 'Portfolio required'],
+        expiresAt: '2026-11-30'
+    },
+    {
+        id: 'DS-003',
+        title: 'Data Scientist',
+        company: 'AI Solutions Inc',
+        location: 'Bangalore',
+        type: 'Full-time',
+        description: 'Join our AI team to build predictive models for retail clients. Experience with Python, TensorFlow, and SQL required.',
+        requirements: ['3+ years in Data Science', 'Python, SQL, TensorFlow', 'NLP experience is a bonus'],
+        expiresAt: '2026-10-15'
+    },
+    {
+        id: 'UX-004',
+        title: 'UI/UX Designer',
+        company: 'Creative Studio',
+        location: 'Mumbai/Hybrid',
+        type: 'project-based',
+        description: 'Creative designer needed for a fintech mobile app redesign. Must have experience with Figma and prototyping.',
+        requirements: ['Figma Expert', 'Mobile App Design', 'User Research'],
+        expiresAt: '2026-09-01'
+    },
+    {
+        id: 'EXPIRED-005',
+        title: 'Junior Java Developer',
+        company: 'Legacy Corp',
+        location: 'Chennai',
+        type: 'Full-time',
+        description: 'Entry-level Java developer role. This job is expired and should not be visible.',
+        requirements: ['Java Core', 'Spring Boot Basics'],
+        expiresAt: '2025-01-01' // Past Date
+    },
+    {
+        id: 'PM-006',
+        title: 'Product Manager',
+        company: 'Startup Hub',
+        location: 'Gurgaon',
+        type: 'Full-time',
+        description: 'Lead product strategy for our new SaaS platform. Requires experience in agile methodologies.',
+        requirements: ['3+ years Product Management', 'Agile/Scrum', 'B2B SaaS experience'],
+        expiresAt: '2027-03-20'
     }
 ];
 
 const Referrals = () => {
     const [selectedJob, setSelectedJob] = useState<Job | null>(null);
     const [showAll, setShowAll] = useState(false);
+
+    // Filter out expired jobs automatically
+    const activeJobs = jobs.filter(job => new Date(job.expiresAt) >= new Date());
 
     const handleApply = (job: Job) => {
         const subject = `Referral Request: ${job.title} (${job.id})`;
@@ -49,7 +95,7 @@ const Referrals = () => {
         window.location.href = `mailto:harshshukla2016@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
     };
 
-    const visibleJobs = showAll ? jobs : jobs.slice(0, 2); // Show 2 jobs initially
+    const visibleJobs = showAll ? activeJobs : activeJobs.slice(0, 2); // Show 2 jobs initially
 
     return (
         <section id="referrals" className="py-20 bg-background text-gray-100 relative overflow-hidden">
@@ -155,7 +201,7 @@ const Referrals = () => {
                 </div>
 
                 {/* View More Button */}
-                {jobs.length > 2 && (
+                {activeJobs.length > 2 && (
                     <div className="text-center">
                         <button
                             onClick={() => setShowAll(!showAll)}
