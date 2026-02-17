@@ -12,6 +12,8 @@ import Contact from './components/Contact';
 import SEO from './components/SEO';
 import Terminal from './components/Terminal';
 import Support from './components/Support';
+import MusicPlayer from './components/MusicPlayer';
+import ChatBot from './components/ChatBot';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -44,10 +46,15 @@ function App() {
       <Education />
       <Referrals />
       <Testimonials />
-      <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-4 pointer-events-none"> {/* Pointer events none to allow clicks through container, re-enable on children if needed */}
+
+      {/* Fixed Widgets */}
+      <MusicPlayer />
+      <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-3 pointer-events-none">
+        <div className="pointer-events-auto"><ChatBot /></div>
         <div className="pointer-events-auto"><Support /></div>
         <div className="pointer-events-auto"><Terminal /></div>
       </div>
+
       <Contact />
     </div>
   );
