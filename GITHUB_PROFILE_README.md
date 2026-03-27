@@ -32,7 +32,7 @@
 <!-- 👨‍💻 ABOUT ME                                                                  -->
 <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
 
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People%20with%20professions/Man%20Technologist%20Light%20Skin%20Tone.png" width="30"/> &nbsp;About Me
+## 👨‍💻 &nbsp;About Me
 
 ```yaml
 name: Harsh Kumar Shukla
@@ -67,7 +67,7 @@ motto: "Code with purpose, build with passion."
 <!-- 💼 PROFESSIONAL EXPERIENCE                                                    -->
 <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
 
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Briefcase.png" width="28"/> &nbsp;Professional Experience
+## 💼 &nbsp;Professional Experience
 
 <table>
 <tr>
@@ -121,7 +121,7 @@ motto: "Code with purpose, build with passion."
 <!-- 🛠️ TECH STACK                                                                 -->
 <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
 
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Hammer%20and%20Wrench.png" width="28"/> &nbsp;Tech Stack
+## 🛠️ &nbsp;Tech Stack
 
 <div align="center">
 
@@ -167,7 +167,7 @@ motto: "Code with purpose, build with passion."
 <!-- 🚀 FEATURED PROJECTS                                                          -->
 <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
 
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Rocket.png" width="28"/> &nbsp;Featured Projects
+## 🚀 &nbsp;Featured Projects
 
 <div align="center">
 
@@ -277,7 +277,7 @@ motto: "Code with purpose, build with passion."
 <!-- 🎓 EDUCATION                                                                  -->
 <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
 
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Graduation%20Cap.png" width="28"/> &nbsp;Education
+## 🎓 &nbsp;Education
 
 <table>
 <tr>
@@ -314,12 +314,12 @@ motto: "Code with purpose, build with passion."
 <!-- 📊 GITHUB STATS                                                               -->
 <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
 
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Bar%20Chart.png" width="28"/> &nbsp;GitHub Analytics
+## 📊 &nbsp;GitHub Analytics
 
 <div align="center">
 
 <img src="https://github-readme-stats.vercel.app/api?username=harshshukla2016&show_icons=true&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&icon_color=6c3ad1&ring_color=6c3ad1&count_private=true" width="49%"/>
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=harshshukla2016&theme=github-dark-blue&hide_border=true&background=0d1117&stroke=1a1b27&ring=6c3ad1&fire=58a6ff&currStreakLabel=58a6ff&sideLabels=c9d1d9&currStreakNum=c9d1d9&sideNums=c9d1d9&dates=8b949e" width="49%"/>
+<img src="https://streak-stats.demolab.com/?user=harshshukla2016&theme=github-dark-blue&hide_border=true&background=0d1117&stroke=1a1b27&ring=6c3ad1&fire=58a6ff&currStreakLabel=58a6ff&sideLabels=c9d1d9&currStreakNum=c9d1d9&sideNums=c9d1d9&dates=8b949e" width="49%"/>
 
 <br/>
 
@@ -333,7 +333,7 @@ motto: "Code with purpose, build with passion."
 <!-- 🏆 CERTIFICATIONS                                                             -->
 <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
 
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Trophy.png" width="28"/> &nbsp;Certifications & Achievements
+## 🏆 &nbsp;Certifications & Achievements
 
 <div align="center">
 
@@ -354,7 +354,7 @@ motto: "Code with purpose, build with passion."
 <!-- 🌟 SOFT SKILLS & INTERESTS                                                    -->
 <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
 
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Star-Struck.png" width="28"/> &nbsp;Beyond Code
+## 🌟 &nbsp;Beyond Code
 
 <div align="center">
 
@@ -394,12 +394,24 @@ Proud parent of two dogs.
 ---
 
 <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
-<!-- 🐍 CONTRIBUTION SNAKE                                                         -->
+<!-- 🏆 GITHUB TROPHIES                                                            -->
 <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/harshshukla2016/harshshukla2016/output/github-snake-dark.svg" alt="Snake animation" />
+## 🏅 &nbsp;GitHub Trophies
+
+<img src="https://github-profile-trophy.vercel.app/?username=harshshukla2016&theme=discord&no-frame=true&no-bg=true&column=7&margin-w=10" width="98%"/>
+
+<br/>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/harshshukla2016/harshshukla2016/blob/output/github-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://github.com/harshshukla2016/harshshukla2016/blob/output/github-snake.svg" />
+  <img alt="github-snake" src="https://github.com/harshshukla2016/harshshukla2016/blob/output/github-snake-dark.svg" />
+</picture>
+
+> 💡 *Snake animation will appear once you set up the [snk GitHub Action](https://github.com/Platane/snk) in your `harshshukla2016` profile repo.*
 
 </div>
 
@@ -409,7 +421,7 @@ Proud parent of two dogs.
 <!-- 📬 CONNECT WITH ME                                                            -->
 <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
 
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Incoming%20Envelope.png" width="28"/> &nbsp;Let's Connect!
+## 📬 &nbsp;Let's Connect!
 
 <div align="center">
 
