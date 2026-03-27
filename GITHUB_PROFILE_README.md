@@ -48,8 +48,6 @@ passions:
 motto: "Code with purpose, build with passion."
 ```
 
-<img align="right" src="https://github-readme-stats.vercel.app/api/top-langs/?username=harshshukla2016&layout=donut-vertical&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&ring_color=6c3ad1" width="280"/>
-
 - 🏢 &nbsp;Currently working as **SAP SD Consultant** at **Cognizant**
 - 🎓 &nbsp;Pursuing **MCA in AI/ML** from **Amity University Online**
 - 🎯 &nbsp;Graduated **BCA** from **Dr. Virendra Swaroop Institute** (73%)
@@ -171,23 +169,12 @@ motto: "Code with purpose, build with passion."
 
 <div align="center">
 
-<a href="https://github.com/harshshukla2016/Palletizer-reach-checker">
-<img src="https://github-readme-stats.vercel.app/api/pin/?username=harshshukla2016&repo=Palletizer-reach-checker&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&icon_color=6c3ad1" width="400"/>
-</a>&nbsp;
-<a href="https://github.com/harshshukla2016/Industrial-Palletisation-System">
-<img src="https://github-readme-stats.vercel.app/api/pin/?username=harshshukla2016&repo=Industrial-Palletisation-System&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&icon_color=6c3ad1" width="400"/>
-</a>
+<a href="https://github.com/harshshukla2016/Palletizer-reach-checker"><img src="https://img.shields.io/badge/🔧_Palletizer_Reach_Checker-Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Palletizer"/></a>&nbsp;
+<a href="https://github.com/harshshukla2016/Industrial-Palletisation-System"><img src="https://img.shields.io/badge/🏭_Industrial_Palletisation-JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="Palletisation"/></a>&nbsp;
+<a href="https://github.com/harshshukla2016/QR-code"><img src="https://img.shields.io/badge/📱_QR_Code_Generator-Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="QR Code"/></a>
 
-<a href="https://github.com/harshshukla2016/QR-code">
-<img src="https://github-readme-stats.vercel.app/api/pin/?username=harshshukla2016&repo=QR-code&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&icon_color=6c3ad1" width="400"/>
-</a>&nbsp;
-<a href="https://github.com/harshshukla2016/Harsh_Kumar_Shukla_portfolio">
-<img src="https://github-readme-stats.vercel.app/api/pin/?username=harshshukla2016&repo=Harsh_Kumar_Shukla_portfolio&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&icon_color=6c3ad1" width="400"/>
-</a>
-
-<a href="https://github.com/harshshukla2016/Galactic-Memory-Odessy-3d-Love-City">
-<img src="https://github-readme-stats.vercel.app/api/pin/?username=harshshukla2016&repo=Galactic-Memory-Odessy-3d-Love-City&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&icon_color=6c3ad1" width="400"/>
-</a>
+<a href="https://github.com/harshshukla2016/Harsh_Kumar_Shukla_portfolio"><img src="https://img.shields.io/badge/🌐_Portfolio_Website-TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="Portfolio"/></a>&nbsp;
+<a href="https://github.com/harshshukla2016/Galactic-Memory-Odessy-3d-Love-City"><img src="https://img.shields.io/badge/🌌_Galactic_Memory_Odyssey-TypeScript-3178C6?style=for-the-badge&logo=threedotjs&logoColor=white" alt="Galactic"/></a>
 
 </div>
 
@@ -318,8 +305,7 @@ motto: "Code with purpose, build with passion."
 
 <div align="center">
 
-<img src="https://github-readme-stats.vercel.app/api?username=harshshukla2016&show_icons=true&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=58a6ff&text_color=c9d1d9&icon_color=6c3ad1&ring_color=6c3ad1&count_private=true" width="49%"/>
-<img src="https://streak-stats.demolab.com/?user=harshshukla2016&theme=github-dark-blue&hide_border=true&background=0d1117&stroke=1a1b27&ring=6c3ad1&fire=58a6ff&currStreakLabel=58a6ff&sideLabels=c9d1d9&currStreakNum=c9d1d9&sideNums=c9d1d9&dates=8b949e" width="49%"/>
+<img src="https://streak-stats.demolab.com/?user=harshshukla2016&theme=github-dark-blue&hide_border=true&background=0d1117&stroke=1a1b27&ring=6c3ad1&fire=58a6ff&currStreakLabel=58a6ff&sideLabels=c9d1d9&currStreakNum=c9d1d9&sideNums=c9d1d9&dates=8b949e" width="60%"/>
 
 <br/>
 
@@ -390,30 +376,6 @@ Proud parent of two dogs.
 </td>
 </tr>
 </table>
-
----
-
-<!-- ═══════════════════════════════════════════════════════════════════════════════ -->
-<!-- 🏆 GITHUB TROPHIES                                                            -->
-<!-- ═══════════════════════════════════════════════════════════════════════════════ -->
-
-<div align="center">
-
-## 🏅 &nbsp;GitHub Trophies
-
-<img src="https://github-profile-trophy.vercel.app/?username=harshshukla2016&theme=discord&no-frame=true&no-bg=true&column=7&margin-w=10" width="98%"/>
-
-<br/>
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/harshshukla2016/harshshukla2016/blob/output/github-snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://github.com/harshshukla2016/harshshukla2016/blob/output/github-snake.svg" />
-  <img alt="github-snake" src="https://github.com/harshshukla2016/harshshukla2016/blob/output/github-snake-dark.svg" />
-</picture>
-
-> 💡 *Snake animation will appear once you set up the [snk GitHub Action](https://github.com/Platane/snk) in your `harshshukla2016` profile repo.*
-
-</div>
 
 ---
 
