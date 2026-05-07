@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Github, Loader2, X, ExternalLink, Globe } from 'lucide-react';
-import ProjectCard, { GitHubRepo } from './ProjectCard';
+import ProjectCard, { type GitHubRepo } from './ProjectCard';
 import { usePortfolio } from '../context/PortfolioContext';
 
 const Projects = () => {
