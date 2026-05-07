@@ -745,6 +745,119 @@ const AdminPanel = () => {
                             </div>
                         )}
 
+                        {activeTab === 'aibrain' && (
+                            <div className="space-y-8">
+                                <div className="bg-primary/5 border border-primary/20 rounded-2xl p-6 flex items-start gap-4 shadow-[0_0_15px_rgba(0,243,255,0.05)]">
+                                    <Sparkles size={24} className="text-primary mt-1" />
+                                    <div>
+                                        <h3 className="text-lg font-bold text-white mb-1 tracking-wide">Neural Core Configuration</h3>
+                                        <p className="text-sm text-white/50 leading-relaxed font-light">Fine-tune your AI Assistant's persona. These settings influence how the Navigator interacts with visitors and recruiters.</p>
+                                    </div>
+                                </div>
+
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div className="p-6 bg-white/5 border border-white/10 rounded-2xl">
+                                        <label className="block text-[10px] uppercase tracking-widest font-mono text-primary font-bold mb-4">Core Personality</label>
+                                        <select 
+                                            value={localAI.personality} 
+                                            onChange={e => setLocalAI({...localAI, personality: e.target.value})}
+                                            className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary text-sm font-mono"
+                                        >
+                                            <option value="Professional">Professional & Technical</option>
+                                            <option value="Futuristic">Futuristic & Sci-Fi</option>
+                                            <option value="Casual">Casual & Friendly</option>
+                                            <option value="Minimalist">Minimalist & Direct</option>
+                                        </select>
+                                    </div>
+                                    <div className="p-6 bg-white/5 border border-white/10 rounded-2xl">
+                                        <label className="block text-[10px] uppercase tracking-widest font-mono text-primary font-bold mb-4">AI Voice Synthesis</label>
+                                        <div className="flex items-center gap-4">
+                                            <button 
+                                                onClick={() => setLocalAI({...localAI, voice: localAI.voice === 'Enabled' ? 'Disabled' : 'Enabled'})}
+                                                className={`flex-1 py-3 rounded-xl font-bold text-sm transition-all ${localAI.voice === 'Enabled' ? 'bg-primary text-black' : 'bg-white/5 text-white/40 border border-white/10'}`}
+                                            >
+                                                {localAI.voice === 'Enabled' ? 'ON' : 'OFF'}
+                                            </button>
+                                            <p className="text-[10px] text-white/30 font-mono w-24">Toggle audio feedback</p>
+                                        </div>
+                                    </div>
+                                    <div className="md:col-span-2 p-6 bg-white/5 border border-white/10 rounded-2xl">
+                                        <label className="block text-[10px] uppercase tracking-widest font-mono text-primary font-bold mb-4">Extended Knowledge Base</label>
+                                        <textarea 
+                                            rows={6} 
+                                            value={localAI.knowledge} 
+                                            onChange={e => setLocalAI({...localAI, knowledge: e.target.value})}
+                                            placeholder="Add specific facts about your projects, current learning, or career goals that the AI should know..."
+                                            className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-primary text-sm font-mono resize-none"
+                                        ></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
+                        {activeTab === 'referralhub' && (
+                            <div className="space-y-8">
+                                <div className="bg-secondary/5 border border-secondary/20 rounded-2xl p-6 flex items-start gap-4">
+                                    <Users size={24} className="text-secondary mt-1" />
+                                    <div>
+                                        <h3 className="text-lg font-bold text-white mb-1 tracking-wide">Network Opportunity Mesh</h3>
+                                        <p className="text-sm text-white/50 leading-relaxed font-light">Manage roles you are willing to refer individuals for. This builds your reputation as a professional bridge.</p>
+                                    </div>
+                                </div>
+
+                                {localReferrals.map((ref: any, i: number) => (
+                                    <div key={i} className="p-6 bg-white/5 border border-white/10 border-l-4 border-l-secondary rounded-2xl space-y-4 relative group shadow-sm hover:shadow-md transition-all">
+                                        <button onClick={() => {
+                                            const newRefs = [...localReferrals];
+                                            newRefs.splice(i, 1);
+                                            setLocalReferrals(newRefs);
+                                        }} className="absolute top-4 right-4 p-2 bg-red-500/10 text-red-400 rounded-lg hover:bg-red-500/20 transition-colors opacity-0 group-hover:opacity-100">
+                                            <Trash2 size={16} />
+                                        </button>
+                                        
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div className="md:col-span-2">
+                                                <label className="block text-[10px] uppercase tracking-widest font-mono text-secondary font-bold mb-2">Role Title</label>
+                                                <input type="text" value={ref.title || ''} onChange={e => {
+                                                    const newRefs = [...localReferrals];
+                                                    newRefs[i].title = e.target.value;
+                                                    setLocalReferrals(newRefs);
+                                                }} className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-secondary text-sm font-bold" />
+                                            </div>
+                                            <div>
+                                                <label className="block text-[10px] uppercase tracking-widest font-mono text-white/40 font-bold mb-2">Company / Group</label>
+                                                <input type="text" value={ref.company || ''} onChange={e => {
+                                                    const newRefs = [...localReferrals];
+                                                    newRefs[i].company = e.target.value;
+                                                    setLocalReferrals(newRefs);
+                                                }} className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-secondary text-sm font-bold" />
+                                            </div>
+                                            <div>
+                                                <label className="block text-[10px] uppercase tracking-widest font-mono text-white/40 font-bold mb-2">Network ID</label>
+                                                <input type="text" value={ref.id || ''} onChange={e => {
+                                                    const newRefs = [...localReferrals];
+                                                    newRefs[i].id = e.target.value;
+                                                    setLocalReferrals(newRefs);
+                                                }} className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-secondary text-sm font-mono" placeholder="REF-XXXX" />
+                                            </div>
+                                            <div className="md:col-span-2">
+                                                <label className="block text-[10px] uppercase tracking-widest font-mono text-white/40 font-bold mb-2">Description / Context</label>
+                                                <textarea rows={2} value={ref.description || ''} onChange={e => {
+                                                    const newRefs = [...localReferrals];
+                                                    newRefs[i].description = e.target.value;
+                                                    setLocalReferrals(newRefs);
+                                                }} className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-secondary text-sm resize-none"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+
+                                <button onClick={() => setLocalReferrals([{id: `REF-${Math.floor(Math.random()*9000)+1000}`, title:'', company:'', description:''}, ...localReferrals])} className="w-full py-4 border-2 border-dashed border-white/10 rounded-2xl text-sm font-bold tracking-widest text-white/40 hover:text-secondary hover:border-secondary/50 hover:bg-secondary/5 transition-all flex justify-center items-center gap-2 uppercase">
+                                    <Plus size={18} /> Establish New Referral Link
+                                </button>
+                            </div>
+                        )}
+
                         {activeTab === 'global' && (
                             <div className="space-y-6">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 bg-slate-50 border border-slate-200 rounded-2xl shadow-sm">
