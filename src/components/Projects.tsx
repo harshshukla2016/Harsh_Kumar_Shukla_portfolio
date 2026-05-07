@@ -92,7 +92,31 @@ const Projects = () => {
                     <p className="text-secondary/40 max-w-xl mx-auto mt-4 text-sm font-light leading-relaxed">
                         A dynamic collection synced from the GitHub nebula. Click a card to expand into mission control.
                     </p>
-                    <div className="section-divider mt-6"></div>
+                    
+                    {/* System Status Bar */}
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 p-4 glass rounded-xl border border-white/10 max-w-4xl mx-auto">
+                        <div className="text-center p-3 border-r border-white/5">
+                            <span className="block text-[8px] text-primary/60 uppercase tracking-widest font-mono mb-1">Status</span>
+                            <span className="text-lg font-display font-bold text-white flex items-center justify-center gap-2">
+                                <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+                                ONLINE
+                            </span>
+                        </div>
+                        <div className="text-center p-3 border-r border-white/5">
+                            <span className="block text-[8px] text-primary/60 uppercase tracking-widest font-mono mb-1">Sync</span>
+                            <span className="text-lg font-display font-bold text-white uppercase">{repos.length > 0 ? 'Linked' : 'Pending'}</span>
+                        </div>
+                        <div className="text-center p-3 border-r border-white/5">
+                            <span className="block text-[8px] text-primary/60 uppercase tracking-widest font-mono mb-1">Core</span>
+                            <span className="text-lg font-display font-bold text-white uppercase">React v19</span>
+                        </div>
+                        <div className="text-center p-3">
+                            <span className="block text-[8px] text-primary/60 uppercase tracking-widest font-mono mb-1">Liaison</span>
+                            <span className="text-lg font-display font-bold text-primary uppercase">Gemini AI</span>
+                        </div>
+                    </div>
+
+                    <div className="section-divider mt-12"></div>
                 </motion.div>
 
                 {loading ? (

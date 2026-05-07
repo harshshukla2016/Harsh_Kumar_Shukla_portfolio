@@ -19,7 +19,25 @@ const Jobs = () => {
     });
 
     if (activeJobs.length === 0) {
-        return null; // Don't render the section if there are no active jobs
+        return (
+            <section id="jobs" className="py-20 bg-surface text-gray-100 relative">
+                <div className="container mx-auto px-6 text-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                    >
+                        <h2 className="text-4xl font-display font-bold mb-4 neon-text-cyan">Open Positions</h2>
+                        <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full mb-8"></div>
+                        <div className="glass p-12 rounded-2xl border border-white/5 inline-block">
+                            <Briefcase size={48} className="text-secondary/20 mx-auto mb-4" />
+                            <p className="text-gray-400 font-mono text-sm uppercase tracking-widest">No active openings at this moment.</p>
+                            <p className="text-xs text-gray-500 mt-2">Check back later or contact Harsh directly for collaborations.</p>
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
+        );
     }
 
     return (

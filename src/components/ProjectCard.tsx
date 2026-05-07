@@ -11,6 +11,8 @@ export interface GitHubRepo {
     language: string;
     topics: string[];
     updated_at: string;
+    stargazers_count: number;
+    forks_count: number;
 }
 
 interface ProjectCardProps {
@@ -100,13 +102,22 @@ const ProjectCard = ({ project, onClick }: ProjectCardProps) => {
                         )}
                     </div>
                     {project.language && (
-                        <div className="flex items-center gap-2 text-xs font-mono text-secondary/50">
-                            <span className="w-2 h-2 rounded-full bg-primary/60 shadow-[0_0_8px_rgba(0,243,255,0.6)]"></span>
-                            {project.language}
+                        <div className="flex items-center justify-between mt-auto">
+                            <div className="flex items-center gap-2 text-[10px] font-mono text-secondary/50">
+                                <span className="w-1.5 h-1.5 rounded-full bg-primary/60 shadow-[0_0_8px_rgba(0,243,255,0.6)]"></span>
+                                {project.language}
+                            </div>
+                            <div className="flex items-center gap-3 text-[10px] font-mono text-secondary/40">
+                                <span className="flex items-center gap-1"><Github size={10} /> {project.stargazers_count}</span>
+                                <span className="flex items-center gap-1"><ExternalLink size={10} /> {project.forks_count}</span>
+                            </div>
                         </div>
                     )}
                 </div>
             </div>
+            
+            {/* Mission Control Footer */}
+            <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/20 to-transparent group-hover:via-primary/50 transition-all"></div>
         </motion.div>
     );
 };

@@ -89,6 +89,8 @@ export const PortfolioProvider = ({ children }: { children: React.ReactNode }) =
         return defaultData;
     });
 
+    const [theme, setTheme] = useState('cyan'); // 'cyan', 'magenta', 'amber', 'emerald'
+
     useEffect(() => {
         localStorage.setItem('portfolioData', JSON.stringify(data));
     }, [data]);
@@ -101,7 +103,7 @@ export const PortfolioProvider = ({ children }: { children: React.ReactNode }) =
     };
 
     return (
-        <PortfolioContext.Provider value={{ data, updateData }}>
+        <PortfolioContext.Provider value={{ data, updateData, theme, setTheme }}>
             {children}
         </PortfolioContext.Provider>
     );

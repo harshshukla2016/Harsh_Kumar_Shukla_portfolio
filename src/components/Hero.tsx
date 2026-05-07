@@ -107,19 +107,29 @@ function RotatingShape({ color }: { color: string }) {
 }
 
 const Hero = () => {
-    const { data } = usePortfolio();
+    const { data, theme } = usePortfolio();
+    
+    const themeColors: Record<string, string> = {
+        cyan: "#00f3ff",
+        magenta: "#ff00ff",
+        amber: "#f59e0b",
+        emerald: "#10b981"
+    };
+
+    const currentColor = themeColors[theme] || themeColors.cyan;
+
     return (
         <section id="hero" className="relative w-full h-screen flex items-center overflow-hidden bg-background">
             {/* Background Elements */}
             <div className="absolute inset-0 z-0">
                 <Canvas camera={{ position: [0, 0, 5] }}>
                     <ambientLight intensity={0.5} />
-                    <pointLight position={[10, 10, 10]} intensity={1} color="#00f3ff" />
+                    <pointLight position={[10, 10, 10]} intensity={1} color={currentColor} />
                     <Stars radius={100} depth={50} count={3000} factor={4} saturation={0} fade speed={1} />
-                    <Sparkles count={200} scale={10} size={2} speed={0.4} opacity={0.5} color="#00f3ff" />
+                    <Sparkles count={200} scale={10} size={2} speed={0.4} opacity={0.5} color={currentColor} />
                     <InteractiveStarField />
                     <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
-                        <RotatingShape color={data.hero.color || "#00f3ff"} />
+                        <RotatingShape color={currentColor} />
                     </Float>
                 </Canvas>
             </div>
