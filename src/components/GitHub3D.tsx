@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, MeshDistortMaterial } from '@react-three/drei';
+import { Float, MeshDistortMaterial, OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 
 const Bar = ({ position, height, color }: { position: [number, number, number], height: number, color: string }) => {
