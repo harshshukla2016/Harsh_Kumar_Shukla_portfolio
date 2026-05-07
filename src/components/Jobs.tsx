@@ -20,19 +20,26 @@ const Jobs = () => {
 
     if (activeJobs.length === 0) {
         return (
-            <section id="jobs" className="py-20 bg-surface text-gray-100 relative">
+            <section id="jobs" className="py-32 md:py-48 bg-background text-gray-100 relative min-h-[60vh] flex items-center">
                 <div className="container mx-auto px-6 text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
+                        className="max-w-4xl mx-auto"
                     >
-                        <h2 className="text-4xl font-display font-bold mb-4 neon-text-cyan">Open Positions</h2>
-                        <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full mb-8"></div>
-                        <div className="glass p-12 rounded-2xl border border-white/5 inline-block">
-                            <Briefcase size={48} className="text-secondary/20 mx-auto mb-4" />
-                            <p className="text-gray-400 font-mono text-sm uppercase tracking-widest">No active openings at this moment.</p>
-                            <p className="text-xs text-gray-500 mt-2">Check back later or contact Harsh directly for collaborations.</p>
+                        <h2 className="text-4xl md:text-6xl font-display font-bold mb-6 neon-text-cyan">Open Positions</h2>
+                        <div className="w-32 h-1.5 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full mb-12"></div>
+                        <div className="glass p-16 md:p-24 rounded-[2rem] border border-white/10 bg-white/[0.02] shadow-2xl relative overflow-hidden group">
+                            <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                            <Briefcase size={64} className="text-primary/30 mx-auto mb-6 group-hover:scale-110 transition-transform duration-500" />
+                            <p className="text-xl md:text-2xl text-white font-display font-bold uppercase tracking-widest mb-4">Uplink Pending</p>
+                            <p className="text-gray-400 font-mono text-sm max-w-md mx-auto">No active openings at this moment. Our team is currently synchronized. Check back later for new mission assignments.</p>
+                            <div className="mt-8 flex justify-center gap-4">
+                                <span className="w-2 h-2 bg-primary rounded-full animate-ping"></span>
+                                <span className="w-2 h-2 bg-primary/40 rounded-full"></span>
+                                <span className="w-2 h-2 bg-primary/20 rounded-full"></span>
+                            </div>
                         </div>
                     </motion.div>
                 </div>
