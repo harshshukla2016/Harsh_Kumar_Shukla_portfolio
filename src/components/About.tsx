@@ -30,13 +30,15 @@ const About = () => {
                     >
                         <p dangerouslySetInnerHTML={{ __html: data.about.p1 }}></p>
 
-                        {/* GitHub Stats */}
-                        <div className="py-4 space-y-6">
-                            <img
-                                src={`https://github-readme-stats.vercel.app/api?username=${data.global.github}&show_icons=true&theme=radical&hide_border=true`}
-                                alt="GitHub Stats"
-                                className="w-full max-w-md rounded-xl border border-white/5 bg-black/20 p-2"
-                            />
+                        {/* GitHub Stats & Visualization */}
+                        <div className="py-6 space-y-8">
+                            <div className="glass p-4 rounded-2xl border border-white/10 bg-black/40">
+                                <img
+                                    src={`https://github-readme-stats.vercel.app/api?username=${data.global.github}&show_icons=true&theme=tokyonight&hide_border=true&bg_color=00000000`}
+                                    alt="GitHub Stats"
+                                    className="w-full h-auto"
+                                />
+                            </div>
                             <GitHub3D />
                         </div>
 
