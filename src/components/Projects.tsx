@@ -22,21 +22,29 @@ const Projects = () => {
 
     useEffect(() => {
         const fetchRepos = async () => {
+            // 1. Check Cache First (1 hour TTL)
+            const cachedData = localStorage.getItem('github_repos_cache');
+            const cacheTime = localStorage.getItem('github_repos_cache_time');
+            const now = new Date().getTime();
+            const oneHour = 60 * 60 * 1000;
+
+            if (cachedData && cacheTime && (now - parseInt(cacheTime)) < oneHour) {
+                setRepos(JSON.parse(cachedData));
+                setLoading(false);
+                return;
+            }
+
             try {
                 setLoading(true);
-                // Prevent browser caching using a timestamp query parameter to avoid CORS preflight issues
                 const timestamp = new Date().getTime();
                 const response = await fetch(`https://api.github.com/users/harshshukla2016/repos?sort=updated&per_page=100&t=${timestamp}`);
                 
                 if (!response.ok) {
-                    if (response.status === 403) {
-                        throw new Error('GitHub API rate limit exceeded. Please wait a bit.');
-                    }
+                    if (response.status === 403) throw new Error('GitHub API rate limit exceeded. Please wait a bit.');
                     throw new Error('Failed to fetch projects');
                 }
                 
                 const dataAPI = await response.json();
-                
                 const filteredRepos = dataAPI
                     .filter((repo: any) => !repo.fork)
                     .sort((a: any, b: any) => {
@@ -47,9 +55,17 @@ const Projects = () => {
 
                 const finalRepos = [...(data?.customProjects || []), ...filteredRepos.slice(0, 9)];
                 setRepos(finalRepos);
+
+                // Update Cache
+                localStorage.setItem('github_repos_cache', JSON.stringify(finalRepos));
+                localStorage.setItem('github_repos_cache_time', now.toString());
             } catch (err: any) {
                 setError(err.message);
-                console.error('Error fetching repos:', err);
+                // Fallback to cache even if expired if API fails
+                if (cachedData) {
+                    setRepos(JSON.parse(cachedData));
+                    setError(null); 
+                }
             } finally {
                 setLoading(false);
             }
