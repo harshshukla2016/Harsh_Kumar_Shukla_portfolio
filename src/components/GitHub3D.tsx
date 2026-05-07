@@ -24,10 +24,11 @@ const ContributionGrid = () => {
     // GitHub Green Palette
     const colors = ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'];
 
+    const rows = 7; // Days of week
+    const cols = 15; // Weeks
+
     const bars = useMemo(() => {
         const temp = [];
-        const rows = 7; // Days of week
-        const cols = 15; // Weeks
         
         for (let x = 0; x < cols; x++) {
             for (let z = 0; z < rows; z++) {
