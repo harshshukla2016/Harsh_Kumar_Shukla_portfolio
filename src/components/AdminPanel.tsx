@@ -29,6 +29,8 @@ const AdminPanel = () => {
     const [localEducation, setLocalEducation] = useState(recoverArray(data.education));
     const [localCustomProjects, setLocalCustomProjects] = useState(recoverArray(data.customProjects));
     const [localJobs, setLocalJobs] = useState(recoverArray(data.jobs));
+    const [localAI, setLocalAI] = useState(data.ai || { personality: 'Professional', voice: 'Enabled', knowledge: '' });
+    const [localReferrals, setLocalReferrals] = useState(recoverArray(data.referrals) || []);
 
     const handlePublish = () => {
         updateData('hero', localHero);
@@ -39,7 +41,9 @@ const AdminPanel = () => {
         updateData('education', localEducation);
         updateData('customProjects', localCustomProjects);
         updateData('jobs', localJobs);
-        alert('Changes Published Successfully! The live website is updated instantly.');
+        updateData('ai', localAI);
+        updateData('referrals', localReferrals);
+        alert('Transmission Successful! Your changes have been deployed to the public nebula.');
     };
     
     useEffect(() => {
@@ -127,19 +131,19 @@ const AdminPanel = () => {
 
     if (!isAuthenticated) {
         return (
-            <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-6 text-center selection:bg-indigo-600 selection:text-white relative overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-100 via-slate-50 to-slate-50 pointer-events-none"></div>
-                <div className="w-full max-w-sm relative z-10 bg-white p-10 rounded-3xl border border-slate-200 shadow-xl">
-                    <Lock className="w-12 h-12 text-indigo-600 mx-auto mb-6 opacity-80" />
-                    <h1 className="text-2xl font-display font-bold text-slate-900 mb-2 tracking-widest uppercase">Admin Terminal</h1>
-                    <p className="text-slate-500 text-xs font-mono mb-8">Enter administrative override code</p>
+            <div className="min-h-screen bg-black flex flex-col items-center justify-center p-6 text-center selection:bg-primary selection:text-black relative overflow-hidden">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/10 via-black to-black pointer-events-none"></div>
+                <div className="w-full max-w-sm relative z-10 bg-surface/50 backdrop-blur-xl p-10 rounded-3xl border border-white/10 shadow-2xl shadow-primary/10">
+                    <Lock className="w-12 h-12 text-primary mx-auto mb-6 opacity-80" />
+                    <h1 className="text-2xl font-display font-bold text-white mb-2 tracking-widest uppercase">Admin Terminal</h1>
+                    <p className="text-white/40 text-xs font-mono mb-8 uppercase tracking-widest">Administrative Override Required</p>
                     
                     <input 
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         placeholder="••••••••"
-                        className="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-4 text-center text-slate-900 font-mono tracking-[0.5em] placeholder:text-slate-400 focus:outline-none focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600 transition-all"
+                        className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 text-center text-white font-mono tracking-[0.5em] placeholder:text-white/20 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
                         autoFocus
                     />
                 </div>
@@ -148,33 +152,33 @@ const AdminPanel = () => {
     }
 
     return (
-        <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col md:flex-row font-sans selection:bg-indigo-600 selection:text-white">
+        <div className="min-h-screen bg-black text-white flex flex-col md:flex-row font-sans selection:bg-primary selection:text-black overflow-hidden">
             
             {/* Mobile Header */}
-            <div className="md:hidden flex items-center justify-between p-4 border-b border-slate-200 bg-white sticky top-0 z-50">
+            <div className="md:hidden flex items-center justify-between p-4 border-b border-white/5 bg-surface/80 backdrop-blur-md sticky top-0 z-50">
                 <div className="flex items-center gap-2">
-                    <Settings className="w-5 h-5 text-indigo-600 animate-spin-slow" />
-                    <span className="font-display font-bold tracking-wider text-sm">HARSH CMS</span>
+                    <Sparkles className="w-5 h-5 text-primary animate-pulse" />
+                    <span className="font-display font-bold tracking-wider text-sm uppercase">Harsh OS v3.0</span>
                 </div>
-                <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="p-2 hover:bg-slate-100 rounded-lg transition-colors">
+                <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="p-2 hover:bg-white/5 rounded-lg transition-colors text-white/70">
                     {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
                 </button>
             </div>
 
             {/* Sidebar Navigation */}
-            <aside className={`fixed inset-y-0 left-0 z-40 w-64 bg-white border-r border-slate-200 transform transition-transform duration-300 ease-in-out md:translate-x-0 md:static md:h-screen flex flex-col ${mobileMenuOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full'}`}>
-                <div className="p-6 hidden md:flex items-center gap-3 border-b border-slate-100">
-                    <div className="p-2 bg-indigo-50 rounded-xl border border-indigo-100">
-                        <Settings className="w-5 h-5 text-indigo-600 animate-spin-slow" />
+            <aside className={`fixed inset-y-0 left-0 z-40 w-64 bg-surface border-r border-white/5 transform transition-transform duration-300 ease-in-out md:translate-x-0 md:static md:h-screen flex flex-col ${mobileMenuOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full'}`}>
+                <div className="p-6 hidden md:flex items-center gap-3 border-b border-white/5">
+                    <div className="p-2 bg-primary/10 rounded-xl border border-primary/20">
+                        <Settings className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                        <h2 className="font-display font-bold tracking-widest text-sm text-slate-900">HARSH CMS</h2>
-                        <p className="text-[10px] text-slate-500 font-mono">v2.0 Dashboard</p>
+                        <h2 className="font-display font-bold tracking-widest text-sm text-white">COMMAND CENTER</h2>
+                        <p className="text-[10px] text-primary/60 font-mono uppercase font-bold">Harsh Portfolio OS</p>
                     </div>
                 </div>
 
                 <div className="flex-1 overflow-y-auto py-6 px-4 space-y-1">
-                    <p className="text-[10px] font-mono text-slate-500 uppercase tracking-widest pl-3 mb-4 font-bold">Content Modules</p>
+                    <p className="text-[10px] font-mono text-white/40 uppercase tracking-widest pl-3 mb-4 font-bold">System Modules</p>
                     {tabs.map((tab) => {
                         const Icon = tab.icon;
                         const isActive = activeTab === tab.id;
@@ -182,36 +186,52 @@ const AdminPanel = () => {
                             <button
                                 key={tab.id}
                                 onClick={() => { setActiveTab(tab.id); setMobileMenuOpen(false); }}
-                                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 text-sm font-bold ${isActive ? 'bg-indigo-50 text-indigo-700 border border-indigo-200 shadow-sm' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50 border border-transparent'}`}
+                                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 text-sm font-bold ${isActive ? 'bg-primary/10 text-primary border border-primary/20 shadow-[0_0_15px_rgba(0,243,255,0.1)]' : 'text-white/60 hover:text-white hover:bg-white/5 border border-transparent'}`}
                             >
-                                <Icon size={18} className={isActive ? 'text-indigo-600' : 'text-slate-400'} />
+                                <Icon size={18} className={isActive ? 'text-primary' : 'text-white/40'} />
                                 {tab.name}
                             </button>
                         );
                     })}
+                    
+                    {/* New Tabs Placeholder */}
+                    <button
+                        onClick={() => setActiveTab('aibrain')}
+                        className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 text-sm font-bold ${activeTab === 'aibrain' ? 'bg-primary/10 text-primary border border-primary/20' : 'text-white/60 hover:text-white hover:bg-white/5 border border-transparent'}`}
+                    >
+                        <Sparkles size={18} className={activeTab === 'aibrain' ? 'text-primary' : 'text-white/40'} />
+                        AI Navigator Brain
+                    </button>
+                    <button
+                        onClick={() => setActiveTab('referralhub')}
+                        className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 text-sm font-bold ${activeTab === 'referralhub' ? 'bg-primary/10 text-primary border border-primary/20' : 'text-white/60 hover:text-white hover:bg-white/5 border border-transparent'}`}
+                    >
+                        <Users size={18} className={activeTab === 'referralhub' ? 'text-primary' : 'text-white/40'} />
+                        Referral Hub
+                    </button>
                 </div>
 
-                <div className="p-4 border-t border-slate-100">
-                    <button onClick={handleLogout} className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-red-200 text-red-600 hover:bg-red-50 transition-colors text-sm font-bold tracking-wide">
-                        <LogOut size={16} /> LOCK TERMINAL
+                <div className="p-4 border-t border-white/5">
+                    <button onClick={handleLogout} className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-red-500/20 text-red-400 hover:bg-red-500/10 transition-colors text-sm font-bold tracking-wide uppercase">
+                        <LogOut size={16} /> Disconnect Uplink
                     </button>
                 </div>
             </aside>
 
             {/* Main Content Area */}
-            <main className="flex-1 h-screen overflow-y-auto bg-slate-50 relative">
+            <main className="flex-1 h-screen overflow-y-auto bg-black relative">
                 <div className="max-w-4xl mx-auto p-6 md:p-10 pb-32">
                     
                     {/* Dynamic Header */}
                     <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
                         <div>
-                            <h1 className="text-3xl md:text-4xl font-display font-bold text-slate-900 mb-2 flex items-center gap-3">
-                                {tabs.find(t => t.id === activeTab)?.name} 
+                            <h1 className="text-3xl md:text-4xl font-display font-bold text-white mb-2 flex items-center gap-3 uppercase tracking-wider">
+                                {tabs.find(t => t.id === activeTab)?.name || (activeTab === 'aibrain' ? 'AI Navigator Brain' : 'Referral Hub')} 
                             </h1>
-                            <p className="text-slate-500 text-sm">Update your public portfolio data instantly.</p>
+                            <p className="text-white/40 text-sm font-mono uppercase tracking-widest">Override public portfolio data</p>
                         </div>
-                        <button onClick={handlePublish} className="bg-indigo-600 text-white px-8 py-3.5 rounded-xl text-sm font-bold tracking-wide transition-all hover:scale-105 flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/30 shrink-0">
-                            <Save className="w-4 h-4" /> PUBLISH CHANGES
+                        <button onClick={handlePublish} className="bg-primary text-black px-8 py-3.5 rounded-xl text-sm font-bold tracking-widest uppercase transition-all hover:scale-105 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(0,243,255,0.3)] shrink-0">
+                            <Save className="w-4 h-4" /> Commit Changes
                         </button>
                     </div>
 
