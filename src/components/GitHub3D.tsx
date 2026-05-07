@@ -64,7 +64,6 @@ const ContributionGrid = () => {
                 rotation={[-Math.PI / 2, 0, Math.PI / 2]}
                 fontSize={0.2}
                 color="#666"
-                font="/fonts/Inter-Bold.woff"
             >
                 DAYS
             </Text>
