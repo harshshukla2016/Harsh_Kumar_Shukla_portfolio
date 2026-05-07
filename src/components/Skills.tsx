@@ -1,31 +1,34 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Code, Database, Server, PenTool, Users, Clock, Terminal, Cpu } from 'lucide-react';
-
-const skills = [
-    {
-        category: 'Programming & Tech',
-        icon: <Code className="w-8 h-8 text-primary" />,
-        items: ['Python', 'React.js', 'JavaScript', 'SQL', 'C++', 'Java', 'HTML/CSS', 'SAP SD'],
-    },
-    {
-        category: 'Tools & Platforms',
-        icon: <Terminal className="w-8 h-8 text-secondary" />,
-        items: ['Linux (Red Hat)', 'AWS', 'Arduino', 'IoT Cloud', 'WordPress', 'Oracle DB', 'Git', 'VS Code'],
-    },
-    {
-        category: 'Design & Office',
-        icon: <PenTool className="w-8 h-8 text-accent" />,
-        items: ['Canva', 'CorelDraw', 'PowerPoint', 'Excel', 'Google Sheets', 'Microsoft Office'],
-    },
-    {
-        category: 'Soft Skills',
-        icon: <Users className="w-8 h-8 text-green-400" />,
-        items: ['Leadership', 'Time Management', 'Problem Solving', 'Teamwork', 'Documentation', 'Communication'],
-    },
-];
+import { usePortfolio } from '../context/PortfolioContext';
 
 const Skills = () => {
+    const { data } = usePortfolio();
+
+    const skillsData = [
+        {
+            category: 'Frontend & UI',
+            icon: <Code className="w-8 h-8 text-primary" />,
+            items: data.skills.frontend.split(',').map((s: string) => s.trim()).filter(Boolean),
+        },
+        {
+            category: 'Backend & Tools',
+            icon: <Terminal className="w-8 h-8 text-secondary" />,
+            items: data.skills.backend.split(',').map((s: string) => s.trim()).filter(Boolean),
+        },
+        {
+            category: 'SAP Expertise',
+            icon: <Database className="w-8 h-8 text-accent" />,
+            items: data.skills.sap.split(',').map((s: string) => s.trim()).filter(Boolean),
+        },
+        {
+            category: 'Soft Skills',
+            icon: <Users className="w-8 h-8 text-green-400" />,
+            items: ['Leadership', 'Time Management', 'Problem Solving', 'Teamwork', 'Communication'],
+        },
+    ];
+
     return (
         <section id="skills" className="py-20 bg-surface text-gray-100 relative overflow-hidden">
             <div className="container mx-auto px-6">
@@ -40,7 +43,7 @@ const Skills = () => {
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {skills.map((skillGroup, index) => (
+                    {skillsData.map((skillGroup, index) => (
                         <motion.div
                             key={index}
                             initial={{ opacity: 0, y: 30 }}
@@ -80,7 +83,7 @@ const Skills = () => {
                             ease: "linear"
                         }}
                     >
-                        {[...skills, ...skills, ...skills].flatMap((group, groupIndex) =>
+                        {[...skillsData, ...skillsData, ...skillsData].flatMap((group, groupIndex) =>
                             group.items.map((item, itemIndex) => (
                                 <div key={`${groupIndex}-${itemIndex}`} className="flex items-center space-x-2 text-gray-400 opacity-50 hover:opacity-100 transition-opacity">
                                     <span className="text-xl font-display font-bold">{item}</span>

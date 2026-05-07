@@ -1,8 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Brain, Code, Database, Globe } from 'lucide-react';
+import { usePortfolio } from '../context/PortfolioContext';
 
 const About = () => {
+    const { data } = usePortfolio();
     return (
         <section id="about" className="py-20 bg-surface text-gray-100 overflow-hidden relative">
             <div className="container mx-auto px-6 relative z-10">
@@ -13,7 +15,7 @@ const About = () => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-4xl font-display font-bold mb-4 neon-text-cyan">About Me</h2>
+                    <h2 className="text-4xl font-display font-bold mb-4 neon-text-cyan">{data.about.title}</h2>
                     <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
                 </motion.div>
 
@@ -25,34 +27,26 @@ const About = () => {
                         viewport={{ once: true }}
                         className="space-y-6 text-lg text-gray-300 leading-relaxed font-light"
                     >
-                        <p>
-                            I am a passionate <span className="text-primary font-semibold">Software Engineer</span> and <span className="text-secondary font-semibold">SAP SD Consultant</span> with a strong foundation in Compute Applications.
-                            Currently pursuing my <span className="text-white font-medium">Master of Computer Applications (MCA)</span> in Artificial Intelligence and Machine Learning from Amity University while working at <span className="text-white font-medium">Cognizant</span>.
-                        </p>
+                        <p dangerouslySetInnerHTML={{ __html: data.about.p1 }}></p>
 
                         {/* GitHub Stats */}
                         <div className="py-4">
                             <img
-                                src="https://github-readme-stats.vercel.app/api?username=harshshukla2016&show_icons=true&theme=radical&hide_border=true"
+                                src={`https://github-readme-stats.vercel.app/api?username=${data.global.github}&show_icons=true&theme=radical&hide_border=true`}
                                 alt="GitHub Stats"
                                 className="w-full max-w-md"
                             />
                         </div>
 
-                        <p>
-                            My journey began with a BCA from Dr. Virendra Swaroop Institute, where I developed robust analytical skills. I have hands-on experience in full-stack development, database management, and industrial automation systems.
-                        </p>
-                        <p>
-                            I thrive on solving complex problems, whether it's optimizing enterprise ERP systems or coding robotic arms for precise manipulation. My goal is to leverage technology to create efficient, scalable, and innovative solutions.
-                        </p>
+                        <p dangerouslySetInnerHTML={{ __html: data.about.p2 }}></p>
 
                         <div className="grid grid-cols-2 gap-4 mt-8">
                             <div className="p-4 glass rounded-lg border-l-4 border-primary">
-                                <h4 className="font-display font-bold text-xl text-white">02+</h4>
+                                <h4 className="font-display font-bold text-xl text-white">0{data.about.exp}+</h4>
                                 <p className="text-sm text-gray-400">Years Experience</p>
                             </div>
                             <div className="p-4 glass rounded-lg border-l-4 border-secondary">
-                                <h4 className="font-display font-bold text-xl text-white">10+</h4>
+                                <h4 className="font-display font-bold text-xl text-white">{data.about.projects}+</h4>
                                 <p className="text-sm text-gray-400">Projects Completed</p>
                             </div>
                         </div>

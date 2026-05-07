@@ -1,129 +1,227 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Github, ExternalLink, Code, Layers, Box, Cpu } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Github, Loader2, X, ExternalLink, Globe } from 'lucide-react';
+import ProjectCard from './ProjectCard';
+import { usePortfolio } from '../context/PortfolioContext';
 
-const projects = [
-    {
-        title: 'Industrial Palletisation System',
-        description: 'A robust system for industrial automation using React.js for UI and Flask for backend. Features real-time communication and efficiency tracking.',
-        tags: ['React.js', 'Flask', 'Python', 'Automation'],
-        github: 'https://github.com/harshshukla2016/Industrial-Palletisation-System',
-        icon: <Box size={40} className="text-secondary" />,
-        color: 'from-secondary/20 to-purple-900/20'
-    },
-    {
-        title: 'Robotic Arm Jogging',
-        description: 'Control interface for Elite Co-bot robotic arm using Python SDK. Supports 3D mouse, joystick, and keyboard inputs with 200ms latency.',
-        tags: ['Python', 'Robotics', 'SDK', 'Hardware'],
-        github: 'https://github.com/harshshukla2016/Palletizer-reach-checker', // Assuming related or just linking generally
-        icon: <Cpu size={40} className="text-primary" />,
-        color: 'from-primary/20 to-blue-900/20'
-    },
-    {
-        title: 'Galactic Memory Odyssey',
-        description: 'A 3D interactive memory game set in a futuristic city environment. Explores Three.js and game logic.',
-        tags: ['Three.js', 'JavaScript', '3D', 'Game Dev'],
-        github: 'https://github.com/harshshukla2016/Galactic-Memory-Odessy-3d-Love-City',
-        icon: <Layers size={40} className="text-accent" />,
-        color: 'from-accent/20 to-indigo-900/20'
-    },
-    {
-        title: 'QR Code Generator',
-        description: 'A simple and efficient tool to generate generic QR codes for various links and text inputs.',
-        tags: ['JavaScript', 'HTML/CSS', 'Utility'],
-        github: 'https://github.com/harshshukla2016/QR-code',
-        icon: <Code size={40} className="text-green-400" />,
-        color: 'from-green-500/20 to-emerald-900/20'
-    }
-];
+interface GitHubRepo {
+    id: string | number;
+    name: string;
+    description: string;
+    html_url: string;
+    homepage: string;
+    language: string;
+    topics: string[];
+    updated_at: string;
+    isCustom?: boolean;
+}
 
 const Projects = () => {
+    const [repos, setRepos] = useState<GitHubRepo[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+    const [selectedProject, setSelectedProject] = useState<GitHubRepo | null>(null);
+    const { data } = usePortfolio();
+
+    useEffect(() => {
+        if (selectedProject) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+        return () => { document.body.style.overflow = 'auto'; };
+    }, [selectedProject]);
+
+    useEffect(() => {
+        const fetchRepos = async () => {
+            try {
+                setLoading(true);
+                // Prevent browser caching using a timestamp query parameter to avoid CORS preflight issues
+                const timestamp = new Date().getTime();
+                const response = await fetch(`https://api.github.com/users/harshshukla2016/repos?sort=updated&per_page=100&t=${timestamp}`);
+                
+                if (!response.ok) {
+                    if (response.status === 403) {
+                        throw new Error('GitHub API rate limit exceeded. Please wait a bit.');
+                    }
+                    throw new Error('Failed to fetch projects');
+                }
+                
+                const dataAPI = await response.json();
+                
+                const filteredRepos = dataAPI
+                    .filter((repo: any) => !repo.fork)
+                    .sort((a: any, b: any) => {
+                        if (a.homepage && !b.homepage) return -1;
+                        if (!a.homepage && b.homepage) return 1;
+                        return new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime();
+                    });
+
+                const finalRepos = [...(data?.customProjects || []), ...filteredRepos.slice(0, 9)];
+                setRepos(finalRepos);
+            } catch (err: any) {
+                setError(err.message);
+                console.error('Error fetching repos:', err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchRepos();
+    }, [data?.customProjects]);
+
     return (
-        <section id="projects" className="py-20 bg-background text-gray-100 relative">
-            <div className="container mx-auto px-6">
+        <section id="projects" className="py-28 bg-background text-secondary relative overflow-hidden">
+            {/* Spatial Background Text */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
+                <span className="font-accent text-[12vw] leading-none text-white/[0.015] tracking-[0.3em] whitespace-nowrap">
+                    PROJECTS
+                </span>
+            </div>
+
+            <div className="container mx-auto px-6 relative z-10">
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, ease: [0.77, 0, 0.175, 1] }}
                     viewport={{ once: true }}
-                    className="text-center mb-16"
+                    className="text-center mb-20"
                 >
-                    <h2 className="text-4xl font-display font-bold mb-4 neon-text-cyan">Featured Projects</h2>
-                    <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+                    <p className="text-xs font-mono tracking-[0.4em] uppercase text-primary/60 mb-4">The Simulation Room</p>
+                    <h2 className="text-display-md font-display font-bold text-canvas">Stellar Creations</h2>
+                    <p className="text-secondary/40 max-w-xl mx-auto mt-4 text-sm font-light leading-relaxed">
+                        A dynamic collection synced from the GitHub nebula. Click a card to expand into mission control.
+                    </p>
+                    <div className="section-divider mt-6"></div>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {projects.map((project, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                            className={`relative p-1 rounded-2xl bg-gradient-to-br ${project.color} overflow-hidden group hover:neon-box-shadow transition-all duration-300`}
+                {loading ? (
+                    <div className="flex flex-col items-center justify-center py-20 space-y-4">
+                        <Loader2 className="w-10 h-10 text-primary animate-spin" />
+                        <p className="text-muted text-xs font-mono tracking-widest">Synchronizing with GitHub...</p>
+                    </div>
+                ) : error ? (
+                    <div className="text-center py-20">
+                        <p className="text-red-400/60 font-mono text-sm">Transmission Failed: {error}</p>
+                        <button 
+                            onClick={() => window.location.reload()}
+                            className="mt-4 px-6 py-2 bg-white/[0.03] border border-white/5 rounded-full hover:border-primary/20 text-muted text-xs font-mono transition-all duration-500"
                         >
-                            <div className="absolute inset-0 bg-black/40 backdrop-blur-sm z-0"></div>
-                            <div className="relative z-10 glass h-full p-8 rounded-xl flex flex-col items-start space-y-4 border border-white/10 group-hover:border-white/20 transition-colors">
-                                <div className="flex justify-between w-full items-start">
-                                    <div className="p-3 bg-white/5 rounded-lg border border-white/10 group-hover:bg-white/10 transition-colors">
-                                        {project.icon}
-                                    </div>
-                                    <div className="flex space-x-3">
-                                        <a
-                                            href={project.github}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-gray-400 hover:text-white transition-colors"
-                                            title="View Code"
-                                        >
-                                            <Github size={20} />
-                                        </a>
-                                        <a
-                                            href={project.github}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-gray-400 hover:text-white transition-colors"
-                                            title="Live Demo"
-                                        >
-                                            <ExternalLink size={20} />
-                                        </a>
-                                    </div>
-                                </div>
+                            Retry Uplink
+                        </button>
+                    </div>
+                ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {repos.map((repo, index) => (
+                            <motion.div
+                                key={repo.id}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.06, duration: 0.8, ease: [0.77, 0, 0.175, 1] }}
+                            >
+                                <ProjectCard 
+                                    project={repo} 
+                                    onClick={() => setSelectedProject(repo)} 
+                                />
+                            </motion.div>
+                        ))}
+                    </div>
+                )}
 
-                                <h3 className="text-2xl font-bold font-display text-white group-hover:text-primary transition-colors">
-                                    {project.title}
-                                </h3>
-
-                                <p className="text-gray-400 leading-relaxed text-sm flex-grow">
-                                    {project.description}
-                                </p>
-
-                                <div className="flex flex-wrap gap-2 pt-4">
-                                    {project.tags.map((tag, i) => (
-                                        <span
-                                            key={i}
-                                            className="px-3 py-1 text-xs font-mono rounded-full bg-white/5 text-gray-300 border border-white/10"
-                                        >
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
-
-                <div className="text-center mt-12">
-                    <a
-                        href="https://github.com/harshshukla2016"
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    className="text-center mt-16"
+                >
+                    <motion.a
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.97 }}
+                        href={`https://github/${data?.global?.github || 'harshshukla2016'}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-surface border border-gray-700 hover:border-primary text-gray-300 hover:text-white transition-all duration-300"
+                        className="inline-flex items-center gap-3 px-8 py-3 rounded-full border border-white/5 hover:border-primary/20 text-muted hover:text-primary transition-all duration-500 text-xs font-mono tracking-wider"
                     >
-                        <Github size={20} />
-                        <span>View More on GitHub</span>
-                    </a>
-                </div>
+                        <Github size={16} />
+                        <span>Explore Full Repository</span>
+                    </motion.a>
+                </motion.div>
             </div>
+
+            {/* Modal Overlay */}
+            <AnimatePresence>
+                {selectedProject && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={() => setSelectedProject(null)}
+                        className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-black/80 backdrop-blur-md"
+                    >
+                        <motion.div
+                            initial={{ scale: 0.95, y: 20, opacity: 0 }}
+                            animate={{ scale: 1, y: 0, opacity: 1 }}
+                            exit={{ scale: 0.95, y: 20, opacity: 0 }}
+                            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+                            onClick={(e) => e.stopPropagation()}
+                            className="relative w-full max-w-6xl h-[90vh] bg-surface border border-white/10 rounded-2xl overflow-hidden flex flex-col shadow-2xl shadow-primary/20"
+                        >
+                            <button 
+                                onClick={() => setSelectedProject(null)}
+                                className="absolute top-4 right-4 z-20 p-2 bg-black/50 hover:bg-white/10 rounded-full text-white/70 hover:text-white transition-colors"
+                            >
+                                <X size={24} />
+                            </button>
+
+                            {/* Header details */}
+                            <div className="p-6 md:p-8 bg-black/40 border-b border-white/5 shrink-0 relative z-10">
+                                <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-3">{selectedProject.name}</h2>
+                                <p className="text-secondary/70 text-sm md:text-base max-w-3xl leading-relaxed">{selectedProject.description}</p>
+                                
+                                <div className="flex flex-wrap items-center gap-4 mt-6">
+                                    {selectedProject.html_url && (
+                                        <a href={selectedProject.html_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-5 py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full text-sm font-mono text-white transition-colors">
+                                            <Github size={18} /> Source Code
+                                        </a>
+                                    )}
+                                    {selectedProject.homepage && selectedProject.homepage.startsWith('http') && (
+                                        <a href={selectedProject.homepage} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-5 py-2.5 bg-primary/20 hover:bg-primary/30 border border-primary/30 rounded-full text-sm font-mono text-primary transition-colors">
+                                            <ExternalLink size={18} /> Live Demo
+                                        </a>
+                                    )}
+                                    <div className="flex-grow"></div>
+                                    <div className="flex gap-2 flex-wrap">
+                                        {selectedProject.topics?.map(t => (
+                                            <span key={t} className="px-3 py-1.5 bg-white/5 rounded text-xs font-mono text-secondary/60">
+                                                {t}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Live Preview / Iframe */}
+                            <div className="flex-grow bg-[#0a0a0a] relative overflow-hidden">
+                                {selectedProject.homepage && selectedProject.homepage.startsWith('http') ? (
+                                    <iframe 
+                                        src={selectedProject.homepage} 
+                                        title={`${selectedProject.name} Live Preview`}
+                                        className="w-full h-full border-none bg-white"
+                                        sandbox="allow-scripts allow-same-origin allow-forms"
+                                    />
+                                ) : (
+                                    <div className="flex flex-col items-center justify-center h-full text-secondary/30">
+                                        <Globe size={64} className="mb-4 opacity-20" />
+                                        <p className="font-mono text-sm tracking-widest uppercase">No live preview available</p>
+                                        <p className="text-xs mt-2 font-light">Only GitHub repository exists for this project.</p>
+                                    </div>
+                                )}
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </section>
     );
 };

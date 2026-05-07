@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import * as THREE from 'three';
 import profileImg from '../assets/profile_transparent.png';
 import resumePdf from '../assets/Harsh_Kumar_Shukla_Resume_fresher.pdf';
+import { usePortfolio } from '../context/PortfolioContext';
 
 // Reusable geometry to avoid recreation
 const particleGeometry = new THREE.OctahedronGeometry(0.2, 0);
@@ -80,7 +81,7 @@ const InteractiveStarField = () => {
     );
 };
 
-function RotatingShape() {
+function RotatingShape({ color }: { color: string }) {
     const meshRef = useRef<THREE.Mesh>(null!);
 
     useFrame((state, delta) => {
@@ -94,11 +95,11 @@ function RotatingShape() {
         <mesh ref={meshRef} position={[2, 0, 0]}> {/* Moved to right to balance image on left */}
             <icosahedronGeometry args={[2.5, 0]} />
             <meshStandardMaterial
-                color="#7000ff"
+                color={color}
                 wireframe
                 transparent
                 opacity={0.3}
-                emissive="#7000ff"
+                emissive={color}
                 emissiveIntensity={0.5}
             />
         </mesh>
@@ -106,6 +107,7 @@ function RotatingShape() {
 }
 
 const Hero = () => {
+    const { data } = usePortfolio();
     return (
         <section id="hero" className="relative w-full h-screen flex items-center overflow-hidden bg-background">
             {/* Background Elements */}
@@ -117,7 +119,7 @@ const Hero = () => {
                     <Sparkles count={200} scale={10} size={2} speed={0.4} opacity={0.5} color="#00f3ff" />
                     <InteractiveStarField />
                     <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
-                        <RotatingShape />
+                        <RotatingShape color={data.hero.color || "#00f3ff"} />
                     </Float>
                 </Canvas>
             </div>
@@ -149,11 +151,10 @@ const Hero = () => {
                     className="w-full md:w-1/2 md:ml-auto text-center md:text-left mt-8 md:mt-0 order-1 md:order-none pointer-events-auto"
                 >
                     <h2 className="text-lg md:text-2xl text-primary font-mono tracking-wider mb-2 md:mb-4">HELLO, I AM</h2>
-                    <h1 className="text-4xl sm:text-5xl md:text-7xl font-display font-bold text-white mb-4 md:mb-6 text-gradient neon-text-cyan leading-tight">
-                        Harsh Kumar<br />Shukla
+                    <h1 className="text-4xl sm:text-5xl md:text-7xl font-display font-bold text-white mb-4 md:mb-6 text-gradient neon-text-cyan leading-tight" dangerouslySetInnerHTML={{ __html: data.hero.mainHeadline.replace(' ', '<br />') }}>
                     </h1>
                     <h3 className="text-xl md:text-3xl text-gray-300 font-light mb-6 md:mb-8">
-                        SAP SD Consultant & <span className="text-secondary font-semibold block sm:inline">Software Engineer</span>
+                        <span dangerouslySetInnerHTML={{ __html: data.hero.subHeadline.replace('&', '<span class="text-secondary font-semibold block sm:inline">&</span>') }}></span>
                     </h3>
 
                     <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
@@ -164,7 +165,7 @@ const Hero = () => {
                             CONTACT ME
                         </a>
                         <a
-                            href={resumePdf}
+                            href={data.global.resumeUrl || resumePdf}
                             download="Harsh_Kumar_Shukla_Resume.pdf"
                             className="px-6 py-3 rounded-full bg-transparent border border-secondary text-secondary hover:bg-secondary hover:text-black transition-all duration-300 neon-glow font-bold tracking-wide text-sm md:text-base"
                         >

@@ -1,62 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Briefcase, Calendar, MapPin } from 'lucide-react';
-
-const experiences = [
-    {
-        company: 'Cognizant',
-        role: 'SAP SD Consultant',
-        period: 'Nov 2025 - Present',
-        location: 'Chennai, Tamil Nadu',
-        description: [
-            'Currently working as an SAP SD Consultant, leveraging expertise in Sales and Distribution modules.',
-            'Contributing to large-scale enterprise resource planning implementation and support projects.',
-        ],
-    },
-    {
-        company: 'Learn With Fraternity Pvt Ltd',
-        role: 'Software Engineer',
-        period: 'Apr 2024 - Apr 2025',
-        location: 'Dehradun, Uttarakhand',
-        description: [
-            'Crafted robust and scalable software solutions involving SQL, AWS, and Windows software development.',
-            'Collaborated on impactful projects driving efficiency in dynamic environments.',
-        ],
-    },
-    {
-        company: 'Organewood Labs',
-        role: 'Software Development Engineer Intern',
-        period: 'Apr 2024 - Oct 2024',
-        location: 'Noida, Uttar Pradesh',
-        description: [
-            'Developed a robust industrial palletization system with a React.js UI and Flask backend.',
-            'Ensured real-time communication and enhanced automation efficiency.',
-            'Enhanced technical skills in React.js, Flask, and real-time data communication.',
-        ],
-    },
-    {
-        company: 'Accenture',
-        role: 'Packaged App Development Specialist',
-        period: 'Nov 2023 - Apr 2024',
-        location: 'Gurugram, Haryana',
-        description: [
-            'Supported and enhanced enterprise-level IT infrastructure using Red Hat Enterprise Linux, Oracle DB Administration, and AWS.',
-            'Ensured optimal performance and reliability of critical systems.',
-        ],
-    },
-    {
-        company: 'EPR Recycler',
-        role: 'Business Operations Associate',
-        period: 'Jun 2023 - Nov 2023',
-        location: 'Kanpur, Uttar Pradesh',
-        description: [
-            'Leveraged technical expertise to support research initiatives focused on environmental conservation.',
-            'Collaborated with government bodies like Nagar Panchayats to integrate innovative solutions.',
-        ],
-    },
-];
+import { usePortfolio } from '../context/PortfolioContext';
 
 const Experience = () => {
+    const { data } = usePortfolio();
     return (
         <section id="experience" className="py-20 bg-background text-gray-100 relative">
             <div className="container mx-auto px-6">
@@ -71,7 +19,7 @@ const Experience = () => {
                 </motion.div>
 
                 <div className="relative border-l-2 border-gray-700 ml-4 md:ml-10 space-y-12">
-                    {experiences.map((exp, index) => (
+                    {data.experience.map((exp: any, index: number) => (
                         <motion.div
                             key={index}
                             initial={{ opacity: 0, x: -20 }}

@@ -1,33 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { School, GraduationCap, Calendar } from 'lucide-react';
-
-const education = [
-    {
-        institution: 'Amity University Online',
-        degree: 'Masters Of Computer Application (MCA)',
-        specialization: 'Artificial Intelligence / Machine Learning',
-        period: 'Jan 2024 - Present',
-        description: 'Focused on principles of AI, ML, NLP, and predictive analytics for intelligent systems.',
-    },
-    {
-        institution: 'Dr. Virendra Swaroop Institute Of Computer Studies',
-        degree: 'Bachelors Of Computer Application (BCA)',
-        specialization: 'Computer Science Fundamentals',
-        period: 'Aug 2020 - 2023',
-        grade: '73.0%',
-        description: 'Comprehensive study in software development, database management, and web technologies.',
-    },
-    {
-        institution: 'Onkareshwar Saraswati Vidya Niketan',
-        degree: 'Intermediate (PCM)',
-        specialization: 'Science & Mathematics',
-        period: '2016 - 2020',
-        description: 'Foundation in physics, chemistry, and mathematics.',
-    },
-];
+import { usePortfolio } from '../context/PortfolioContext';
 
 const Education = () => {
+    const { data } = usePortfolio();
     return (
         <section id="education" className="py-20 bg-surface text-gray-100 relative">
             <div className="container mx-auto px-6">
@@ -42,7 +19,7 @@ const Education = () => {
                 </motion.div>
 
                 <div className="max-w-4xl mx-auto space-y-8">
-                    {education.map((edu, index) => (
+                    {data.education.map((edu: any, index: number) => (
                         <motion.div
                             key={index}
                             initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}

@@ -1,0 +1,628 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "tailwind.config.js",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/tailwind.config.js",
+      "source_location": "L1",
+      "id": "users_harshshukla_desktop_dev_portfolio_harsh_tailwind_config_js",
+      "community": 14,
+      "norm_label": "tailwind.config.js"
+    },
+    {
+      "label": "eslint.config.js",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/eslint.config.js",
+      "source_location": "L1",
+      "id": "users_harshshukla_desktop_dev_portfolio_harsh_eslint_config_js",
+      "community": 15,
+      "norm_label": "eslint.config.js"
+    },
+    {
+      "label": "vite.config.ts",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/vite.config.ts",
+      "source_location": "L1",
+      "id": "users_harshshukla_desktop_dev_portfolio_harsh_vite_config_ts",
+      "community": 16,
+      "norm_label": "vite.config.ts"
+    },
+    {
+      "label": "postcss.config.js",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/postcss.config.js",
+      "source_location": "L1",
+      "id": "users_harshshukla_desktop_dev_portfolio_harsh_postcss_config_js",
+      "community": 17,
+      "norm_label": "postcss.config.js"
+    },
+    {
+      "label": "App.tsx",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/App.tsx",
+      "source_location": "L1",
+      "id": "users_harshshukla_desktop_dev_portfolio_harsh_src_app_tsx",
+      "community": 5,
+      "norm_label": "app.tsx"
+    },
+    {
+      "label": "App()",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/App.tsx",
+      "source_location": "L18",
+      "id": "app_app",
+      "community": 5,
+      "norm_label": "app()"
+    },
+    {
+      "label": "main.tsx",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/main.tsx",
+      "source_location": "L1",
+      "id": "users_harshshukla_desktop_dev_portfolio_harsh_src_main_tsx",
+      "community": 18,
+      "norm_label": "main.tsx"
+    },
+    {
+      "label": "vite-env.d.ts",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/vite-env.d.ts",
+      "source_location": "L1",
+      "id": "users_harshshukla_desktop_dev_portfolio_harsh_src_vite_env_d_ts",
+      "community": 19,
+      "norm_label": "vite-env.d.ts"
+    },
+    {
+      "label": "Projects.tsx",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Projects.tsx",
+      "source_location": "L1",
+      "id": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_projects_tsx",
+      "community": 20,
+      "norm_label": "projects.tsx"
+    },
+    {
+      "label": "Hero.tsx",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Hero.tsx",
+      "source_location": "L1",
+      "id": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_hero_tsx",
+      "community": 0,
+      "norm_label": "hero.tsx"
+    },
+    {
+      "label": "Explosion()",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Hero.tsx",
+      "source_location": "L12",
+      "id": "hero_explosion",
+      "community": 0,
+      "norm_label": "explosion()"
+    },
+    {
+      "label": "handleClick()",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Hero.tsx",
+      "source_location": "L58",
+      "id": "hero_handleclick",
+      "community": 0,
+      "norm_label": "handleclick()"
+    },
+    {
+      "label": "removeExplosion()",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Hero.tsx",
+      "source_location": "L63",
+      "id": "hero_removeexplosion",
+      "community": 0,
+      "norm_label": "removeexplosion()"
+    },
+    {
+      "label": "Navbar.tsx",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Navbar.tsx",
+      "source_location": "L1",
+      "id": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_navbar_tsx",
+      "community": 6,
+      "norm_label": "navbar.tsx"
+    },
+    {
+      "label": "handleScroll()",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Navbar.tsx",
+      "source_location": "L13",
+      "id": "navbar_handlescroll",
+      "community": 6,
+      "norm_label": "handlescroll()"
+    },
+    {
+      "label": "Experience.tsx",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Experience.tsx",
+      "source_location": "L1",
+      "id": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_experience_tsx",
+      "community": 7,
+      "norm_label": "experience.tsx"
+    },
+    {
+      "label": "Experience()",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Experience.tsx",
+      "source_location": "L59",
+      "id": "experience_experience",
+      "community": 7,
+      "norm_label": "experience()"
+    },
+    {
+      "label": "Support.tsx",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Support.tsx",
+      "source_location": "L1",
+      "id": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_support_tsx",
+      "community": 8,
+      "norm_label": "support.tsx"
+    },
+    {
+      "label": "handlePayment()",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Support.tsx",
+      "source_location": "L8",
+      "id": "support_handlepayment",
+      "community": 8,
+      "norm_label": "handlepayment()"
+    },
+    {
+      "label": "MusicPlayer.tsx",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/MusicPlayer.tsx",
+      "source_location": "L1",
+      "id": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_musicplayer_tsx",
+      "community": 1,
+      "norm_label": "musicplayer.tsx"
+    },
+    {
+      "label": "togglePlay()",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/MusicPlayer.tsx",
+      "source_location": "L43",
+      "id": "musicplayer_toggleplay",
+      "community": 1,
+      "norm_label": "toggleplay()"
+    },
+    {
+      "label": "nextSong()",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/MusicPlayer.tsx",
+      "source_location": "L45",
+      "id": "musicplayer_nextsong",
+      "community": 1,
+      "norm_label": "nextsong()"
+    },
+    {
+      "label": "Contact.tsx",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Contact.tsx",
+      "source_location": "L1",
+      "id": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_contact_tsx",
+      "community": 9,
+      "norm_label": "contact.tsx"
+    },
+    {
+      "label": "Contact()",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Contact.tsx",
+      "source_location": "L5",
+      "id": "contact_contact",
+      "community": 9,
+      "norm_label": "contact()"
+    },
+    {
+      "label": "SEO.tsx",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/SEO.tsx",
+      "source_location": "L1",
+      "id": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_seo_tsx",
+      "community": 10,
+      "norm_label": "seo.tsx"
+    },
+    {
+      "label": "SEO()",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/SEO.tsx",
+      "source_location": "L4",
+      "id": "seo_seo",
+      "community": 10,
+      "norm_label": "seo()"
+    },
+    {
+      "label": "Terminal.tsx",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Terminal.tsx",
+      "source_location": "L1",
+      "id": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_terminal_tsx",
+      "community": 2,
+      "norm_label": "terminal.tsx"
+    },
+    {
+      "label": "handleKeyDown()",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Terminal.tsx",
+      "source_location": "L23",
+      "id": "terminal_handlekeydown",
+      "community": 2,
+      "norm_label": "handlekeydown()"
+    },
+    {
+      "label": "handleCommand()",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Terminal.tsx",
+      "source_location": "L42",
+      "id": "terminal_handlecommand",
+      "community": 2,
+      "norm_label": "handlecommand()"
+    },
+    {
+      "label": "Testimonials.tsx",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Testimonials.tsx",
+      "source_location": "L1",
+      "id": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_testimonials_tsx",
+      "community": 11,
+      "norm_label": "testimonials.tsx"
+    },
+    {
+      "label": "Testimonials()",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Testimonials.tsx",
+      "source_location": "L26",
+      "id": "testimonials_testimonials",
+      "community": 11,
+      "norm_label": "testimonials()"
+    },
+    {
+      "label": "Referrals.tsx",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Referrals.tsx",
+      "source_location": "L1",
+      "id": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_referrals_tsx",
+      "community": 3,
+      "norm_label": "referrals.tsx"
+    },
+    {
+      "label": "handleApply()",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Referrals.tsx",
+      "source_location": "L86",
+      "id": "referrals_handleapply",
+      "community": 3,
+      "norm_label": "handleapply()"
+    },
+    {
+      "label": "handleGeneralReferral()",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Referrals.tsx",
+      "source_location": "L92",
+      "id": "referrals_handlegeneralreferral",
+      "community": 3,
+      "norm_label": "handlegeneralreferral()"
+    },
+    {
+      "label": "Skills.tsx",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Skills.tsx",
+      "source_location": "L1",
+      "id": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_skills_tsx",
+      "community": 21,
+      "norm_label": "skills.tsx"
+    },
+    {
+      "label": "ChatBot.tsx",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/ChatBot.tsx",
+      "source_location": "L1",
+      "id": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_chatbot_tsx",
+      "community": 4,
+      "norm_label": "chatbot.tsx"
+    },
+    {
+      "label": "scrollToBottom()",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/ChatBot.tsx",
+      "source_location": "L24",
+      "id": "chatbot_scrolltobottom",
+      "community": 4,
+      "norm_label": "scrolltobottom()"
+    },
+    {
+      "label": "handleSend()",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/ChatBot.tsx",
+      "source_location": "L30",
+      "id": "chatbot_handlesend",
+      "community": 4,
+      "norm_label": "handlesend()"
+    },
+    {
+      "label": "Education.tsx",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Education.tsx",
+      "source_location": "L1",
+      "id": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_education_tsx",
+      "community": 12,
+      "norm_label": "education.tsx"
+    },
+    {
+      "label": "Education()",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Education.tsx",
+      "source_location": "L30",
+      "id": "education_education",
+      "community": 12,
+      "norm_label": "education()"
+    },
+    {
+      "label": "About.tsx",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/About.tsx",
+      "source_location": "L1",
+      "id": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_about_tsx",
+      "community": 13,
+      "norm_label": "about.tsx"
+    },
+    {
+      "label": "About()",
+      "file_type": "code",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/About.tsx",
+      "source_location": "L5",
+      "id": "about_about",
+      "community": 13,
+      "norm_label": "about()"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/App.tsx",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_src": "users_harshshukla_desktop_dev_portfolio_harsh_src_app_tsx",
+      "_tgt": "app_app",
+      "source": "users_harshshukla_desktop_dev_portfolio_harsh_src_app_tsx",
+      "target": "app_app",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Hero.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_src": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_hero_tsx",
+      "_tgt": "hero_explosion",
+      "source": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_hero_tsx",
+      "target": "hero_explosion",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Hero.tsx",
+      "source_location": "L58",
+      "weight": 1.0,
+      "_src": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_hero_tsx",
+      "_tgt": "hero_handleclick",
+      "source": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_hero_tsx",
+      "target": "hero_handleclick",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Hero.tsx",
+      "source_location": "L63",
+      "weight": 1.0,
+      "_src": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_hero_tsx",
+      "_tgt": "hero_removeexplosion",
+      "source": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_hero_tsx",
+      "target": "hero_removeexplosion",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Navbar.tsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_src": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_navbar_tsx",
+      "_tgt": "navbar_handlescroll",
+      "source": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_navbar_tsx",
+      "target": "navbar_handlescroll",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Experience.tsx",
+      "source_location": "L59",
+      "weight": 1.0,
+      "_src": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_experience_tsx",
+      "_tgt": "experience_experience",
+      "source": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_experience_tsx",
+      "target": "experience_experience",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Support.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_src": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_support_tsx",
+      "_tgt": "support_handlepayment",
+      "source": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_support_tsx",
+      "target": "support_handlepayment",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/MusicPlayer.tsx",
+      "source_location": "L43",
+      "weight": 1.0,
+      "_src": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_musicplayer_tsx",
+      "_tgt": "musicplayer_toggleplay",
+      "source": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_musicplayer_tsx",
+      "target": "musicplayer_toggleplay",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/MusicPlayer.tsx",
+      "source_location": "L45",
+      "weight": 1.0,
+      "_src": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_musicplayer_tsx",
+      "_tgt": "musicplayer_nextsong",
+      "source": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_musicplayer_tsx",
+      "target": "musicplayer_nextsong",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Contact.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_src": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_contact_tsx",
+      "_tgt": "contact_contact",
+      "source": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_contact_tsx",
+      "target": "contact_contact",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/SEO.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_src": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_seo_tsx",
+      "_tgt": "seo_seo",
+      "source": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_seo_tsx",
+      "target": "seo_seo",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Terminal.tsx",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_src": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_terminal_tsx",
+      "_tgt": "terminal_handlekeydown",
+      "source": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_terminal_tsx",
+      "target": "terminal_handlekeydown",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Terminal.tsx",
+      "source_location": "L42",
+      "weight": 1.0,
+      "_src": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_terminal_tsx",
+      "_tgt": "terminal_handlecommand",
+      "source": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_terminal_tsx",
+      "target": "terminal_handlecommand",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Testimonials.tsx",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_src": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_testimonials_tsx",
+      "_tgt": "testimonials_testimonials",
+      "source": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_testimonials_tsx",
+      "target": "testimonials_testimonials",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Referrals.tsx",
+      "source_location": "L86",
+      "weight": 1.0,
+      "_src": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_referrals_tsx",
+      "_tgt": "referrals_handleapply",
+      "source": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_referrals_tsx",
+      "target": "referrals_handleapply",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Referrals.tsx",
+      "source_location": "L92",
+      "weight": 1.0,
+      "_src": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_referrals_tsx",
+      "_tgt": "referrals_handlegeneralreferral",
+      "source": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_referrals_tsx",
+      "target": "referrals_handlegeneralreferral",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/ChatBot.tsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_src": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_chatbot_tsx",
+      "_tgt": "chatbot_scrolltobottom",
+      "source": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_chatbot_tsx",
+      "target": "chatbot_scrolltobottom",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/ChatBot.tsx",
+      "source_location": "L30",
+      "weight": 1.0,
+      "_src": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_chatbot_tsx",
+      "_tgt": "chatbot_handlesend",
+      "source": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_chatbot_tsx",
+      "target": "chatbot_handlesend",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/Education.tsx",
+      "source_location": "L30",
+      "weight": 1.0,
+      "_src": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_education_tsx",
+      "_tgt": "education_education",
+      "source": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_education_tsx",
+      "target": "education_education",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "/Users/harshshukla/Desktop/dev/portfolio-harsh/src/components/About.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_src": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_about_tsx",
+      "_tgt": "about_about",
+      "source": "users_harshshukla_desktop_dev_portfolio_harsh_src_components_about_tsx",
+      "target": "about_about",
+      "confidence_score": 1.0
+    }
+  ],
+  "hyperedges": []
+}
