@@ -5,7 +5,7 @@ import ProjectCard from './ProjectCard';
 import { usePortfolio } from '../context/PortfolioContext';
 
 interface GitHubRepo {
-    id: string | number;
+    id: number;
     name: string;
     description: string;
     html_url: string;

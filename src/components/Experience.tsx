@@ -50,7 +50,7 @@ const Experience = () => {
                                 </div>
 
                                 <ul className="list-disc list-outside ml-5 space-y-2 text-gray-300 font-light">
-                                    {exp.description.map((item, i) => (
+                                    {exp.description.map((item: string, i: number) => (
                                         <li key={i}>{item}</li>
                                     ))}
                                 </ul>

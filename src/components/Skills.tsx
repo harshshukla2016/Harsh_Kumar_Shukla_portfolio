@@ -57,7 +57,7 @@ const Skills = () => {
                             </div>
                             <h3 className="text-xl font-bold font-display mb-4 text-white group-hover:text-primary transition-colors">{skillGroup.category}</h3>
                             <div className="flex flex-wrap justify-center gap-2">
-                                {skillGroup.items.map((item, i) => (
+                                {skillGroup.items.map((item: string, i: number) => (
                                     <span
                                         key={i}
                                         className="bg-white/5 text-gray-300 text-xs font-mono px-3 py-1 rounded-full border border-white/10 hover:border-primary hover:text-primary transition-colors cursor-default"
@@ -84,7 +84,7 @@ const Skills = () => {
                         }}
                     >
                         {[...skillsData, ...skillsData, ...skillsData].flatMap((group, groupIndex) =>
-                            group.items.map((item, itemIndex) => (
+                            group.items.map((item: string, itemIndex: number) => (
                                 <div key={`${groupIndex}-${itemIndex}`} className="flex items-center space-x-2 text-gray-400 opacity-50 hover:opacity-100 transition-opacity">
                                     <span className="text-xl font-display font-bold">{item}</span>
                                     <span className="text-primary">•</span>

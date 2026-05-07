@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Component, ErrorInfo, Suspense, lazy } from 'react';
+import React, { useEffect, useState, Component, type ErrorInfo, Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
