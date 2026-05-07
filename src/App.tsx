@@ -5,10 +5,9 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Experience from './components/Experience';
 import Skills from './components/Skills';
-import Jobs from './components/Jobs';
+import Opportunities from './components/Opportunities';
 import Projects from './components/Projects';
 import Education from './components/Education';
-import Referrals from './components/Referrals';
 import Testimonials from './components/Testimonials';
 const Blog = lazy(() => import('./components/Blog'));
 import Contact from './components/Contact';
@@ -70,10 +69,9 @@ function PortfolioContent() {
       <ErrorBoundary><About /></ErrorBoundary>
       <ErrorBoundary><Experience /></ErrorBoundary>
       <ErrorBoundary><Skills /></ErrorBoundary>
-      <ErrorBoundary><Jobs /></ErrorBoundary>
+      <ErrorBoundary><Opportunities /></ErrorBoundary>
       <ErrorBoundary><Projects /></ErrorBoundary>
       <ErrorBoundary><Education /></ErrorBoundary>
-      <ErrorBoundary><Referrals /></ErrorBoundary>
       <ErrorBoundary><Testimonials /></ErrorBoundary>
       <ErrorBoundary><Suspense fallback={null}><Blog /></Suspense></ErrorBoundary>
 
