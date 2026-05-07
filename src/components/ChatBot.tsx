@@ -115,6 +115,13 @@ const ChatBot = () => {
             }
 
             setMessages(prev => [...prev, { text: botReply, isBot: true }]);
+            
+            // AI Voice Synthesis
+            const utterance = new SpeechSynthesisUtterance(botReply);
+            utterance.rate = 1.1;
+            utterance.pitch = 0.9; // Slightly lower for high-tech feel
+            window.speechSynthesis.speak(utterance);
+
         } catch (error) {
             setMessages(prev => [...prev, { text: "My connection to the nebula is weak. Try again later!", isBot: true }]);
         } finally {
