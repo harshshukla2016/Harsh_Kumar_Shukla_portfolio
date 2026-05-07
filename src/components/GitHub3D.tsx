@@ -1,114 +1,126 @@
 import React, { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, Text, ContactShadows, OrbitControls } from '@react-three/drei';
+import { Float, Sphere, MeshDistortMaterial, Points, PointMaterial, OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 
-const Bar = ({ position, height, color }: { position: [number, number, number], height: number, color: string }) => {
-    return (
-        <mesh position={position}>
-            <boxGeometry args={[0.25, height, 0.25]} />
-            <meshStandardMaterial 
-                color={color} 
-                emissive={color} 
-                emissiveIntensity={0.2} 
-                roughness={0.3}
-                metalness={0.8}
-            />
-        </mesh>
-    );
-};
+const DataNebula = () => {
+    const pointsRef = useRef<THREE.Points>(null!);
+    const lineRef = useRef<THREE.LineSegments>(null!);
 
-const ContributionGrid = () => {
-    const groupRef = useRef<THREE.Group>(null!);
+    // Generate static data points for the "Neural Network"
+    const { positions, linePositions } = useMemo(() => {
+        const count = 40;
+        const pos = new Float32Array(count * 3);
+        const linePos = [];
 
-    // GitHub Green Palette
-    const colors = ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'];
+        for (let i = 0; i < count; i++) {
+            const x = (Math.random() - 0.5) * 4;
+            const y = (Math.random() - 0.5) * 4;
+            const z = (Math.random() - 0.5) * 4;
+            pos.set([x, y, z], i * 3);
+        }
 
-    const rows = 7; // Days of week
-    const cols = 15; // Weeks
-
-    const bars = useMemo(() => {
-        const temp = [];
-        
-        for (let x = 0; x < cols; x++) {
-            for (let z = 0; z < rows; z++) {
-                const level = Math.floor(Math.random() * 5); // Mock intensity
-                const height = level === 0 ? 0.05 : level * 0.4;
-                const color = colors[level];
-                
-                temp.push(
-                    <Bar 
-                        key={`${x}-${z}`} 
-                        position={[x * 0.35 - (cols * 0.35) / 2, height / 2, z * 0.35 - (rows * 0.35) / 2]} 
-                        height={height} 
-                        color={color} 
-                    />
+        // Connect nearby points
+        for (let i = 0; i < count; i++) {
+            for (let j = i + 1; j < count; j++) {
+                const dist = Math.sqrt(
+                    Math.pow(pos[i * 3] - pos[j * 3], 2) +
+                    Math.pow(pos[i * 3 + 1] - pos[j * 3 + 1], 2) +
+                    Math.pow(pos[i * 3 + 2] - pos[j * 3 + 2], 2)
                 );
+                if (dist < 1.2) {
+                    linePos.push(pos[i * 3], pos[i * 3 + 1], pos[i * 3 + 2]);
+                    linePos.push(pos[j * 3], pos[j * 3 + 1], pos[j * 3 + 2]);
+                }
             }
         }
-        return temp;
+
+        return { positions: pos, linePositions: new Float32Array(linePos) };
     }, []);
 
-    return (
-        <group ref={groupRef}>
-            {bars}
-            
-            {/* Grid Floor */}
-            <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.01, 0]}>
-                <planeGeometry args={[6, 3]} />
-                <meshStandardMaterial color="#111" transparent opacity={0.8} />
-            </mesh>
+    useFrame((state) => {
+        const time = state.clock.getElapsedTime();
+        pointsRef.current.rotation.y = time * 0.1;
+        lineRef.current.rotation.y = time * 0.1;
+    });
 
-            {/* Axis Labels */}
-            <Text
-                position={[-(cols * 0.35) / 2 - 0.5, 0, 0]}
-                rotation={[-Math.PI / 2, 0, Math.PI / 2]}
-                fontSize={0.2}
-                color="#666"
-            >
-                DAYS
-            </Text>
-            <Text
-                position={[0, 0, (rows * 0.35) / 2 + 0.5]}
-                rotation={[-Math.PI / 2, 0, 0]}
-                fontSize={0.2}
-                color="#666"
-            >
-                WEEKS (COMMIT VELOCITY)
-            </Text>
+    return (
+        <group>
+            {/* Core Neural Sphere */}
+            <Sphere args={[0.5, 32, 32]} position={[0, 0, 0]}>
+                <MeshDistortMaterial
+                    color="#00f3ff"
+                    emissive="#00f3ff"
+                    emissiveIntensity={2}
+                    speed={2}
+                    distort={0.4}
+                    radius={0.5}
+                />
+            </Sphere>
+
+            {/* Neural Nodes */}
+            <points ref={pointsRef}>
+                <bufferGeometry>
+                    <bufferAttribute
+                        attach="attributes-position"
+                        count={positions.length / 3}
+                        array={positions}
+                        itemSize={3}
+                    />
+                </bufferGeometry>
+                <PointMaterial
+                    transparent
+                    color="#00f3ff"
+                    size={0.15}
+                    sizeAttenuation={true}
+                    depthWrite={false}
+                    blending={THREE.AdditiveBlending}
+                />
+            </points>
+
+            {/* Neural Connections */}
+            <lineSegments ref={lineRef}>
+                <bufferGeometry>
+                    <bufferAttribute
+                        attach="attributes-position"
+                        count={linePositions.length / 3}
+                        array={linePositions}
+                        itemSize={3}
+                    />
+                </bufferGeometry>
+                <lineBasicMaterial color="#00f3ff" transparent opacity={0.2} blending={THREE.AdditiveBlending} />
+            </lineSegments>
         </group>
     );
 };
 
 const GitHub3D = () => {
     return (
-        <div className="w-full h-[350px] bg-black/40 rounded-2xl border border-white/10 overflow-hidden relative group">
-            <div className="absolute top-4 left-4 z-10">
-                <span className="text-[10px] font-mono text-primary uppercase tracking-[0.3em] font-bold">Data Visualization</span>
-                <h4 className="text-sm text-white font-display font-bold">Contribution City v2.0</h4>
+        <div className="w-full h-[350px] bg-black/40 rounded-3xl border border-white/5 overflow-hidden relative group">
+            <div className="absolute top-6 left-6 z-10">
+                <div className="flex items-center gap-2 mb-1">
+                    <span className="w-2 h-2 bg-primary rounded-full animate-ping"></span>
+                    <span className="text-[10px] font-mono text-primary uppercase tracking-[0.3em] font-bold">Neural Sync Active</span>
+                </div>
+                <h4 className="text-lg text-white font-display font-bold">Activity Nebula v3.0</h4>
+                <p className="text-[10px] text-white/40 font-mono">Synthesizing GitHub contributions into spatial nodes...</p>
             </div>
             
-            <Canvas camera={{ position: [4, 4, 4], fov: 40 }}>
-                <ambientLight intensity={0.5} />
-                <pointLight position={[10, 10, 10]} intensity={1.5} color="#39d353" />
-                <spotLight position={[-10, 10, 10]} angle={0.15} penumbra={1} />
+            <Canvas camera={{ position: [0, 0, 6], fov: 45 }}>
+                <ambientLight intensity={0.2} />
+                <pointLight position={[10, 10, 10]} intensity={1} color="#00f3ff" />
                 
                 <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.5} />
                 
-                <Float speed={1.5} rotationIntensity={0.2} floatIntensity={0.5}>
-                    <ContributionGrid />
+                <Float speed={2} rotationIntensity={0.5} floatIntensity={0.5}>
+                    <DataNebula />
                 </Float>
-                
-                <ContactShadows position={[0, -0.1, 0]} opacity={0.4} scale={10} blur={2} far={4.5} />
             </Canvas>
 
-            <div className="absolute bottom-4 right-4 flex items-center gap-2">
-                <div className="flex gap-1">
-                    {[0, 1, 2, 3, 4].map(l => (
-                        <div key={l} className="w-2 h-2 rounded-sm" style={{ backgroundColor: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'][l] }}></div>
-                    ))}
-                </div>
-                <span className="text-[10px] text-gray-500 font-mono uppercase">Activity Legend</span>
+            <div className="absolute bottom-6 right-6">
+                <span className="text-[10px] text-primary/40 font-mono uppercase tracking-widest border border-primary/20 px-3 py-1 rounded-full">
+                    Interactive Neural Mesh
+                </span>
             </div>
         </div>
     );
