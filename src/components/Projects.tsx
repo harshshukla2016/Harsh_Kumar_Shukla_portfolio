@@ -1,20 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Github, Loader2, X, ExternalLink, Globe } from 'lucide-react';
-import ProjectCard from './ProjectCard';
+import ProjectCard, { GitHubRepo } from './ProjectCard';
 import { usePortfolio } from '../context/PortfolioContext';
-
-interface GitHubRepo {
-    id: number;
-    name: string;
-    description: string;
-    html_url: string;
-    homepage: string;
-    language: string;
-    topics: string[];
-    updated_at: string;
-    isCustom?: boolean;
-}
 
 const Projects = () => {
     const [repos, setRepos] = useState<GitHubRepo[]>([]);
