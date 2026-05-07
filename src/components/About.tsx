@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Brain, Code, Database, Globe } from 'lucide-react';
 import { usePortfolio } from '../context/PortfolioContext';
+import GitHub3D from './GitHub3D';
 
 const About = () => {
     const { data } = usePortfolio();
@@ -31,11 +32,7 @@ const About = () => {
 
                         {/* GitHub Stats */}
                         <div className="py-4">
-                            <img
-                                src={`https://github-readme-stats.vercel.app/api?username=${data.global.github}&show_icons=true&theme=radical&hide_border=true`}
-                                alt="GitHub Stats"
-                                className="w-full max-w-md"
-                            />
+                            <GitHub3D />
                         </div>
 
                         <p dangerouslySetInnerHTML={{ __html: data.about.p2 }}></p>

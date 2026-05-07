@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-scroll';
+import { soundService } from '../services/soundService';
 
 import profileImg from '../assets/profile_transparent.png'; // Import profile image
 
@@ -64,6 +65,7 @@ const Navbar = () => {
                             smooth={true}
                             duration={500}
                             offset={-70}
+                            onMouseEnter={() => soundService.playHover()}
                             className="text-gray-300 hover:text-primary transition-colors cursor-pointer text-sm tracking-widest uppercase hover:scale-105 transform inline-block"
                         >
                             {link.name}

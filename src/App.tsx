@@ -18,6 +18,7 @@ import Support from './components/Support';
 import MusicPlayer from './components/MusicPlayer';
 import ChatBot from './components/ChatBot';
 import AdminPanel from './components/AdminPanel';
+import CustomCursor from './components/CustomCursor';
 import { PortfolioProvider } from './context/PortfolioContext';
 
 // Global error boundary — prevents any component crash from taking down the whole app
@@ -63,7 +64,8 @@ function PortfolioContent() {
   }
 
   return (
-    <div className="bg-background min-h-screen text-white overflow-x-hidden selection:bg-primary selection:text-black">
+    <div className="bg-background min-h-screen text-white overflow-x-hidden selection:bg-primary selection:text-black cursor-none">
+      <CustomCursor />
       <SEO />
       <Navbar />
       <ErrorBoundary><Hero /></ErrorBoundary>

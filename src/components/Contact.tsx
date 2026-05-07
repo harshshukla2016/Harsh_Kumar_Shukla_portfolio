@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, Linkedin, Github, Send } from 'lucide-react';
+import { Mail, Phone, Linkedin, Github, Send, Calendar } from 'lucide-react';
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -80,6 +80,26 @@ const Contact = () => {
                                 <span className="text-lg">GitHub Profile</span>
                             </a>
                         </div>
+
+                        {/* Quick Book */}
+                        <motion.div 
+                            whileHover={{ scale: 1.02 }}
+                            className="p-6 rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 border border-primary/20 mt-12"
+                        >
+                            <h4 className="font-display font-bold text-white flex items-center gap-2 mb-3">
+                                <Calendar size={20} className="text-primary" />
+                                Instant Sync
+                            </h4>
+                            <p className="text-sm text-gray-400 mb-4">Recruiters: Want to discuss an opportunity? Book a 15-min discovery call directly into my calendar.</p>
+                            <a 
+                                href="https://calendly.com/harshshukla2016" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-black rounded-lg font-bold text-sm hover:bg-white transition-colors"
+                            >
+                                Schedule Call <Send size={14} />
+                            </a>
+                        </motion.div>
                     </motion.div>
 
                     <motion.div
