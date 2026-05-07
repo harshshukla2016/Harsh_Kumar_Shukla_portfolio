@@ -46,6 +46,12 @@ function PortfolioContent() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Force scroll to top on initial load to ensure normal landing
+    window.scrollTo(0, 0);
+    if (window.location.hash) {
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+
     // Simulate loading
     const timer = setTimeout(() => {
       setLoading(false);
