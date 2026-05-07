@@ -59,65 +59,32 @@ const Projects = () => {
     }, [data?.customProjects]);
 
     return (
-        <section id="projects" className="py-28 bg-background text-secondary relative overflow-hidden">
-            {/* Spatial Background Text */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
-                <span className="font-accent text-[12vw] leading-none text-white/[0.015] tracking-[0.3em] whitespace-nowrap">
-                    PROJECTS
-                </span>
-            </div>
-
-            <div className="container mx-auto px-6 relative z-10">
+        <section id="projects" className="py-20 bg-background text-gray-100 relative">
+            <div className="container mx-auto px-6">
                 <motion.div
-                    initial={{ opacity: 0, y: 40 }}
+                    initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, ease: [0.77, 0, 0.175, 1] }}
                     viewport={{ once: true }}
-                    className="text-center mb-20"
+                    className="text-center mb-16"
                 >
-                    <p className="text-xs font-mono tracking-[0.4em] uppercase text-primary/60 mb-4">The Simulation Room</p>
-                    <h2 className="text-display-md font-display font-bold text-canvas">Stellar Creations</h2>
-                    <p className="text-secondary/40 max-w-xl mx-auto mt-4 text-sm font-light leading-relaxed">
-                        A dynamic collection synced from the GitHub nebula. Click a card to expand into mission control.
+                    <h2 className="text-4xl font-display font-bold mb-4 neon-text-cyan">Stellar Creations</h2>
+                    <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full mb-6"></div>
+                    <p className="text-gray-400 max-w-xl mx-auto text-sm font-light leading-relaxed">
+                        A collection of my latest work, synchronized from the GitHub nebula. Click a card for details.
                     </p>
-                    
-                    {/* System Status Bar */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 p-4 glass rounded-xl border border-white/10 max-w-4xl mx-auto">
-                        <div className="text-center p-3 border-r border-white/5">
-                            <span className="block text-[8px] text-primary/60 uppercase tracking-widest font-mono mb-1">Status</span>
-                            <span className="text-lg font-display font-bold text-white flex items-center justify-center gap-2">
-                                <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
-                                ONLINE
-                            </span>
-                        </div>
-                        <div className="text-center p-3 border-r border-white/5">
-                            <span className="block text-[8px] text-primary/60 uppercase tracking-widest font-mono mb-1">Sync</span>
-                            <span className="text-lg font-display font-bold text-white uppercase">{repos.length > 0 ? 'Linked' : 'Pending'}</span>
-                        </div>
-                        <div className="text-center p-3 border-r border-white/5">
-                            <span className="block text-[8px] text-primary/60 uppercase tracking-widest font-mono mb-1">Core</span>
-                            <span className="text-lg font-display font-bold text-white uppercase">React v19</span>
-                        </div>
-                        <div className="text-center p-3">
-                            <span className="block text-[8px] text-primary/60 uppercase tracking-widest font-mono mb-1">Liaison</span>
-                            <span className="text-lg font-display font-bold text-primary uppercase">Gemini AI</span>
-                        </div>
-                    </div>
-
-                    <div className="section-divider mt-12"></div>
                 </motion.div>
 
                 {loading ? (
                     <div className="flex flex-col items-center justify-center py-20 space-y-4">
                         <Loader2 className="w-10 h-10 text-primary animate-spin" />
-                        <p className="text-muted text-xs font-mono tracking-widest">Synchronizing with GitHub...</p>
+                        <p className="text-gray-400 text-xs font-mono tracking-widest">Synchronizing with GitHub...</p>
                     </div>
                 ) : error ? (
                     <div className="text-center py-20">
                         <p className="text-red-400/60 font-mono text-sm">Transmission Failed: {error}</p>
                         <button 
                             onClick={() => window.location.reload()}
-                            className="mt-4 px-6 py-2 bg-white/[0.03] border border-white/5 rounded-full hover:border-primary/20 text-muted text-xs font-mono transition-all duration-500"
+                            className="mt-4 px-6 py-2 bg-white/[0.03] border border-white/5 rounded-full hover:border-primary/20 text-gray-400 text-xs font-mono transition-all duration-500"
                         >
                             Retry Uplink
                         </button>
