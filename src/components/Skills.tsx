@@ -55,11 +55,16 @@ const SkillConstellation = () => {
     const allSkills = useMemo(() => {
         if (!data || !data.skills) return [];
 
+        const parse = (str: any) => {
+            if (typeof str !== 'string') return [];
+            return str.split(',').filter(Boolean).map((s: string) => ({ name: s.trim(), prof: 8 }));
+        };
+
         const skills = [
-            ...(data.skills.frontend || '').split(',').map((s: string) => ({ name: s.trim(), prof: 8 })),
-            ...(data.skills.backend || '').split(',').map((s: string) => ({ name: s.trim(), prof: 7 })),
-            ...(data.skills.sap || '').split(',').map((s: string) => ({ name: s.trim(), prof: 9 })),
-        ].filter(s => s.name);
+            ...parse(data.skills.frontend),
+            ...parse(data.skills.backend),
+            ...parse(data.skills.sap),
+        ];
 
         return skills.map((s, i) => ({
             ...s,
