@@ -107,6 +107,49 @@ const AdminPanel = () => {
         setLocalJobs(newJobs);
     };
 
+    const handleSyncProject = async (index: number) => {
+        const proj = localCustomProjects[index];
+        if (!proj.html_url || !proj.html_url.includes('github.com')) {
+            alert('This feature only works for GitHub repositories!');
+            return;
+        }
+
+        try {
+            // Extract owner/repo
+            const parts = proj.html_url.replace('https://github.com/', '').split('/');
+            const owner = parts[0];
+            const repo = parts[1];
+
+            // 1. Fetch README
+            const readmeRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/readme`, {
+                headers: { 'Accept': 'application/vnd.github.raw' }
+            });
+            
+            if (!readmeRes.ok) throw new Error('README not found or private');
+            const readmeText = await readmeRes.text();
+
+            // 2. AI Summarize using Gemini/Groq
+            const prompt = `Summarize this GitHub README into a professional, concise 2-sentence description for a portfolio. Focus on the core value and tech stack.\n\nREADME CONTENT:\n${readmeText.substring(0, 3000)}`;
+            
+            const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
+            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }),
+            });
+            const resData = await response.json();
+            const summary = resData.candidates[0].content.parts[0].text;
+
+            const newProjs = [...localCustomProjects];
+            newProjs[index].description = summary.trim();
+            setLocalCustomProjects(newProjs);
+            alert(`AI Sync Successful! Synchronized: ${repo}`);
+        } catch (error) {
+            console.error('AI Sync Error:', error);
+            alert('Nebula Sync Failed: Make sure your VITE_GEMINI_API_KEY is active and the repo has a README.');
+        }
+    };
+
     const shareToLinkedIn = (job: any) => {
         if (!job.title || !job.company) {
             alert('Please fill out the Job Title and Company before sharing!');
@@ -587,9 +630,14 @@ const AdminPanel = () => {
                                             <Trash2 size={16} />
                                         </button>
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                            <div className="md:col-span-2">
-                                                <label className="block text-[10px] uppercase tracking-widest font-mono text-slate-700 font-bold mb-2">Project Name</label>
-                                                <input type="text" value={proj.name || ''} onChange={e => {
+                                            <div className="md:col-span-2 flex justify-between items-end mb-2">
+                                                 <label className="block text-[10px] uppercase tracking-widest font-mono text-slate-700 font-bold">Project Name</label>
+                                                 <button onClick={() => handleSyncProject(i)} className="flex items-center gap-1 text-[10px] bg-primary/10 text-primary px-2 py-1 rounded hover:bg-primary/20 transition-colors font-bold uppercase tracking-wider">
+                                                     <Sparkles size={12} /> AI Sync README
+                                                 </button>
+                                             </div>
+                                             <div className="md:col-span-2">
+                                                 <input type="text" value={proj.name || ''} onChange={e => {
                                                     const newProj = [...localCustomProjects];
                                                     newProj[i].name = e.target.value;
                                                     setLocalCustomProjects(newProj);
