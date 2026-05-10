@@ -36,7 +36,12 @@ class ErrorBoundary extends Component<
   }
   render() {
     if (this.state.hasError) {
-      return this.props.fallback || null;
+      return (
+        <div className="py-20 text-center border border-red-500/20 bg-red-500/5 rounded-3xl m-6">
+          <p className="text-red-500 font-mono text-xs uppercase tracking-widest mb-2">Neural_Link_Error</p>
+          <p className="text-white/40 text-[10px] font-mono">Module failed to initialize. Recovery mode active.</p>
+        </div>
+      );
     }
     return this.props.children;
   }

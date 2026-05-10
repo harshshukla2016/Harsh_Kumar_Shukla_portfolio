@@ -53,6 +53,8 @@ const SkillConstellation = () => {
     const currentColor = themeColors[theme] || themeColors.cyan;
 
     const allSkills = useMemo(() => {
+        if (!data || !data.skills) return [];
+
         const skills = [
             ...(data.skills.frontend || '').split(',').map((s: string) => ({ name: s.trim(), prof: 8 })),
             ...(data.skills.backend || '').split(',').map((s: string) => ({ name: s.trim(), prof: 7 })),
@@ -109,6 +111,7 @@ const Skills = () => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
+                    <div className="text-[10px] text-primary/20 mb-2 font-mono">NEURAL_LINK_ESTABLISHED_V1.0</div>
                     <h2 className="text-4xl font-display font-bold mb-4 text-gradient">Skill Constellation</h2>
                     <div className="w-24 h-1 bg-primary mx-auto rounded-full mb-6"></div>
                     <p className="text-white/40 max-w-xl mx-auto text-sm font-light leading-relaxed font-mono uppercase tracking-widest">

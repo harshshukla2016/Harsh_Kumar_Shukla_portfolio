@@ -211,20 +211,23 @@ const Projects = () => {
                             </div>
 
                             {/* Holographic Projection Area */}
-                            <div className="flex-grow bg-[#000] relative overflow-hidden">
-                                <Canvas camera={{ position: [0, 0, 5] }}>
-                                    <ambientLight intensity={0.5} />
-                                    <pointLight position={[10, 10, 10]} intensity={1} color={currentColor} />
-                                    <Stars radius={100} depth={50} count={1000} factor={4} saturation={0} fade speed={1} />
-                                    
-                                    <Float speed={3} rotationIntensity={0.5} floatIntensity={1}>
-                                        <HologramFrame 
-                                            name={selectedProject.name} 
-                                            color={currentColor} 
-                                            homepage={selectedProject.homepage}
-                                        />
-                                    </Float>
-                                </Canvas>
+                            <div className="flex-grow bg-[#000] relative overflow-hidden min-h-[400px]">
+                                <React.Suspense fallback={<div className="absolute inset-0 flex items-center justify-center text-primary font-mono text-xs animate-pulse">Projecting Hologram...</div>}>
+                                    <Canvas camera={{ position: [0, 0, 5] }}>
+                                        <ambientLight intensity={0.5} />
+                                        <pointLight position={[10, 10, 10]} intensity={1.5} color={currentColor} />
+                                        <Stars radius={100} depth={50} count={2000} factor={4} saturation={0} fade speed={1} />
+                                        <Sparkles count={50} scale={5} size={2} speed={0.4} color={currentColor} />
+                                        
+                                        <Float speed={3} rotationIntensity={0.5} floatIntensity={1}>
+                                            <HologramFrame 
+                                                name={selectedProject.name} 
+                                                color={currentColor} 
+                                                homepage={selectedProject.homepage}
+                                            />
+                                        </Float>
+                                    </Canvas>
+                                </React.Suspense>
 
                                 <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,_transparent_0%,_black_90%)]"></div>
                                 
@@ -292,7 +295,6 @@ const HologramFrame = ({ name, color, homepage }: any) => {
                 position={[0, 0, 0.1]}
                 fontSize={0.25}
                 color="white"
-                font="/fonts/Inter-Bold.woff" // Assuming font exists or fallback
                 anchorX="center"
                 anchorY="middle"
                 maxWidth={3.5}
