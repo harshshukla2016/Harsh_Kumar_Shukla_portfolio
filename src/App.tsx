@@ -42,33 +42,30 @@ class ErrorBoundary extends Component<
   }
 }
 
+import { usePortfolio } from './context/PortfolioContext';
+
 function PortfolioContent() {
   const [loading, setLoading] = useState(true);
+  const { theme } = usePortfolio();
 
   useEffect(() => {
-    // Force scroll to top on initial load to ensure normal landing
     window.scrollTo(0, 0);
     if (window.location.hash) {
       window.history.replaceState(null, '', window.location.pathname);
     }
-
-    // Simulate loading
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1000);
+    const timer = setTimeout(() => setLoading(false), 1000);
     return () => clearTimeout(timer);
   }, []);
-
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-background text-primary">
+      <div className="flex items-center justify-center min-h-screen bg-black text-primary">
         <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
   }
 
   return (
-    <div className="bg-background min-h-screen text-white overflow-x-hidden selection:bg-primary selection:text-black">
+    <div className={`bg-black min-h-screen text-white overflow-x-hidden selection:bg-primary selection:text-black transition-colors duration-1000 theme-${theme}`}>
       <SEO />
       <Navbar />
       <ErrorBoundary><Hero /></ErrorBoundary>
@@ -89,7 +86,63 @@ function PortfolioContent() {
         <div className="pointer-events-auto hidden md:block"><Terminal /></div>
       </div>
 
+      <AmbianceController />
       <Contact />
+    </div>
+  );
+}
+
+const AmbianceController = () => {
+  const { theme, setTheme } = usePortfolio();
+  const [isOpen, setIsOpen] = useState(false);
+  const { Settings, X, Palette } = require('lucide-react');
+  const { motion, AnimatePresence } = require('framer-motion');
+
+  const themes = [
+    { id: 'cyan', color: '#00f3ff', name: 'Cyber' },
+    { id: 'emerald', color: '#10b981', name: 'Matrix' },
+    { id: 'amber', color: '#f59e0b', name: 'Solar' },
+    { id: 'ruby', color: '#ef4444', name: 'Ruby' },
+  ];
+
+  return (
+    <div className="fixed bottom-24 left-6 z-[100]">
+      <motion.div 
+        animate={{ width: isOpen ? '160px' : '48px', height: isOpen ? 'auto' : '48px' }}
+        className="bg-surface/80 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden shadow-2xl shadow-black/50"
+      >
+        <button 
+          onClick={() => setIsOpen(!isOpen)}
+          className="w-12 h-12 flex items-center justify-center text-primary hover:text-white transition-colors"
+        >
+          {isOpen ? <X size={20} /> : <Palette size={20} className="animate-pulse" />}
+        </button>
+
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              className="p-4 pt-0 space-y-3"
+            >
+              <p className="text-[9px] font-mono text-white/30 uppercase tracking-[0.2em] text-center border-t border-white/5 pt-3">Aura Sync</p>
+              <div className="flex flex-col gap-1.5">
+                {themes.map((t) => (
+                  <button
+                    key={t.id}
+                    onClick={() => setTheme(t.id)}
+                    className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all ${theme === t.id ? 'bg-white/10 text-white border border-white/10' : 'text-white/40 hover:text-white hover:bg-white/5 border border-transparent'}`}
+                  >
+                    <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: t.color, boxShadow: `0 0 10px ${t.color}` }}></div>
+                    <span className="text-[11px] font-mono font-bold tracking-tight">{t.name}</span>
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
     </div>
   );
 }
