@@ -19,7 +19,7 @@ const Support = () => {
     };
 
     return (
-        <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2 pointer-events-auto">
+        <div className="relative flex flex-col items-end gap-2 pointer-events-auto">
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
