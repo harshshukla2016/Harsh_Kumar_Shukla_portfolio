@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Github, Loader2, X, ExternalLink, Globe } from 'lucide-react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { Stars, Sparkles, Float } from '@react-three/drei';
+import * as THREE from 'three';
+import { useRef } from 'react';
 import ProjectCard, { type GitHubRepo } from './ProjectCard';
 import { usePortfolio } from '../context/PortfolioContext';
 
@@ -9,7 +13,17 @@ const Projects = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [selectedProject, setSelectedProject] = useState<GitHubRepo | null>(null);
-    const { data } = usePortfolio();
+    const { data, theme } = usePortfolio();
+
+    const themeColors: Record<string, string> = {
+        cyan: "#00f3ff",
+        magenta: "#ff00ff",
+        amber: "#f59e0b",
+        emerald: "#10b981",
+        ruby: "#ef4444"
+    };
+
+    const currentColor = themeColors[theme] || themeColors.cyan;
 
     useEffect(() => {
         if (selectedProject) {
@@ -196,20 +210,36 @@ const Projects = () => {
                                 </div>
                             </div>
 
-                            {/* Live Preview / Iframe */}
-                            <div className="flex-grow bg-[#0a0a0a] relative overflow-hidden">
-                                {selectedProject.homepage && selectedProject.homepage.startsWith('http') ? (
-                                    <iframe 
-                                        src={selectedProject.homepage} 
-                                        title={`${selectedProject.name} Live Preview`}
-                                        className="w-full h-full border-none bg-white"
-                                        sandbox="allow-scripts allow-same-origin allow-forms"
-                                    />
-                                ) : (
-                                    <div className="flex flex-col items-center justify-center h-full text-secondary/30">
-                                        <Globe size={64} className="mb-4 opacity-20" />
-                                        <p className="font-mono text-sm tracking-widest uppercase">No live preview available</p>
-                                        <p className="text-xs mt-2 font-light">Only GitHub repository exists for this project.</p>
+                            {/* Holographic Projection Area */}
+                            <div className="flex-grow bg-[#000] relative overflow-hidden">
+                                <Canvas camera={{ position: [0, 0, 5] }}>
+                                    <ambientLight intensity={0.5} />
+                                    <pointLight position={[10, 10, 10]} intensity={1} color={currentColor} />
+                                    <Stars radius={100} depth={50} count={1000} factor={4} saturation={0} fade speed={1} />
+                                    
+                                    <Float speed={3} rotationIntensity={0.5} floatIntensity={1}>
+                                        <HologramFrame 
+                                            name={selectedProject.name} 
+                                            color={currentColor} 
+                                            homepage={selectedProject.homepage}
+                                        />
+                                    </Float>
+                                </Canvas>
+
+                                <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,_transparent_0%,_black_90%)]"></div>
+                                
+                                {selectedProject.homepage && selectedProject.homepage.startsWith('http') && (
+                                    <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20">
+                                        <motion.a
+                                            whileHover={{ scale: 1.05 }}
+                                            whileTap={{ scale: 0.95 }}
+                                            href={selectedProject.homepage}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="px-10 py-4 bg-primary text-black font-bold tracking-[0.2em] rounded-xl shadow-[0_0_30px_rgba(0,243,255,0.4)] flex items-center gap-3 text-xs uppercase"
+                                        >
+                                            <Globe size={16} /> Establish Neural Uplink
+                                        </motion.a>
                                     </div>
                                 )}
                             </div>
@@ -218,6 +248,64 @@ const Projects = () => {
                 )}
             </AnimatePresence>
         </section>
+    );
+};
+
+const HologramFrame = ({ name, color, homepage }: any) => {
+    const meshRef = useRef<any>();
+    const { Text } = require('@react-three/drei');
+
+    useFrame((state, delta) => {
+        if (meshRef.current) {
+            meshRef.current.rotation.y += delta * 0.2;
+        }
+    });
+
+    return (
+        <group>
+            {/* Holographic Frame */}
+            <mesh ref={meshRef}>
+                <boxGeometry args={[4, 2.5, 0.1]} />
+                <meshStandardMaterial 
+                    color={color} 
+                    transparent 
+                    opacity={0.15} 
+                    wireframe={false} 
+                    emissive={color}
+                    emissiveIntensity={0.5}
+                />
+                
+                {/* Edge Glow */}
+                <lineSegments>
+                    <edgesGeometry args={[new THREE.BoxGeometry(4, 2.5, 0.1)]} />
+                    <lineBasicMaterial color={color} transparent opacity={0.8} linewidth={2} />
+                </lineSegments>
+
+                {/* Rotating Tech Mesh behind */}
+                <mesh position={[0, 0, -0.5]} rotation={[0, 0, Math.PI / 4]}>
+                    <planeGeometry args={[3, 3]} />
+                    <meshStandardMaterial color={color} transparent opacity={0.05} wireframe />
+                </mesh>
+            </mesh>
+
+            {/* Project Title Text */}
+            <Text
+                position={[0, 0, 0.1]}
+                fontSize={0.25}
+                color="white"
+                font="/fonts/Inter-Bold.woff" // Assuming font exists or fallback
+                anchorX="center"
+                anchorY="middle"
+                maxWidth={3.5}
+                textAlign="center"
+            >
+                {name.toUpperCase()}
+                <meshStandardMaterial emissive={color} emissiveIntensity={2} />
+            </Text>
+
+            {/* Decorative Particles */}
+            <Sparkles count={50} scale={5} size={2} speed={0.4} color={color} />
+        </group>
     );
 };
 
