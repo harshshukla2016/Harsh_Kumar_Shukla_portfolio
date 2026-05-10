@@ -251,9 +251,10 @@ const Projects = () => {
     );
 };
 
+import { Stars, Sparkles, Float, Text } from '@react-three/drei';
+
 const HologramFrame = ({ name, color, homepage }: any) => {
-    const meshRef = useRef<any>();
-    const { Text } = require('@react-three/drei');
+    const meshRef = useRef<THREE.Mesh>(null);
 
     useFrame((state, delta) => {
         if (meshRef.current) {

@@ -99,8 +99,6 @@ function PortfolioContent() {
 const AmbianceController = () => {
   const { theme, setTheme } = usePortfolio();
   const [isOpen, setIsOpen] = useState(false);
-  const { Settings, X, Palette } = require('lucide-react');
-  const { motion, AnimatePresence } = require('framer-motion');
 
   const themes = [
     { id: 'cyan', color: '#00f3ff', name: 'Cyber' },

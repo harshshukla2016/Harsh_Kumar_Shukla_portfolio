@@ -230,12 +230,13 @@ const ChatBot = () => {
                                 type="text"
                                 value={input}
                                 onChange={(e) => setInput(e.target.value)}
-                                onKeyPress={(e) => e.key === 'Enter' && handleSend()}
+                                onKeyPress={(e) => e.key === 'Enter' && handleSend(null)}
                                 placeholder="Command the system..."
                                 className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-white placeholder:text-white/20 focus:outline-none focus:border-primary transition-all text-sm"
                             />
                             <button
-                                onClick={() => handleSend()}
+                                type="button"
+                                onClick={() => handleSend(null)}
                                 disabled={isTyping}
                                 className="p-3 bg-primary text-black rounded-xl hover:scale-105 transition-all shadow-[0_0_15px_rgba(0,243,255,0.3)]"
                             >

@@ -56,7 +56,7 @@ const Explosion = ({ position, onComplete }: { position: THREE.Vector3, onComple
 const InteractiveStarField = () => {
     const [explosions, setExplosions] = useState<{ id: number; position: THREE.Vector3 }[]>([]);
 
-    const handleClick = (e: any) => {
+    const handleClick = (e: THREE.ThreeEvent<MouseEvent>) => {
         e.stopPropagation();
         setExplosions(prev => [...prev, { id: Date.now(), position: e.point }]);
     };
@@ -106,10 +106,9 @@ function RotatingShape({ color }: { color: string }) {
     );
 }
 
+import { X, Download, Share2 } from 'lucide-react';
+
 const QRModal = ({ isOpen, onClose, data, color }: any) => {
-    const { motion, AnimatePresence } = require('framer-motion');
-    const { X, Download, Share2 } = require('lucide-react');
-    
     // Generate QR link using a public API
     const profileUrl = window.location.href;
     const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(profileUrl)}&color=${color.replace('#', '')}&bgcolor=000000`;
