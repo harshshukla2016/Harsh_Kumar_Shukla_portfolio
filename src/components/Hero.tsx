@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Canvas, useFrame, ThreeEvent } from '@react-three/fiber';
+import { Canvas, useFrame, type ThreeEvent } from '@react-three/fiber';
 import { Stars, Sparkles, Float } from '@react-three/drei';
 import { motion, AnimatePresence } from 'framer-motion';
 import * as THREE from 'three';
