@@ -241,7 +241,7 @@ const ChatBot = () => {
                             >
                                 <Send size={20} />
                             </button>
-                        </div>
+                        </form>
                     </motion.div>
                 )}
             </AnimatePresence>
