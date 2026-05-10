@@ -116,11 +116,30 @@ const ChatBot = () => {
 
             setMessages(prev => [...prev, { text: botReply, isBot: true }]);
             
+            // AI Lead Categorization (New Automation)
+            const lowerMsg = userMsg.toLowerCase();
+            const isRecruiter = lowerMsg.includes('hiring') || lowerMsg.includes('job') || lowerMsg.includes('role') || lowerMsg.includes('recruiter') || lowerMsg.includes('interview');
+            
+            if (isRecruiter) {
+                const leads = JSON.parse(localStorage.getItem('recruiter_leads') || '[]');
+                const newLead = {
+                    id: Date.now(),
+                    timestamp: new Date().toISOString(),
+                    message: userMsg,
+                    intent: 'Recruiter/Hiring',
+                    status: 'Hot'
+                };
+                localStorage.setItem('recruiter_leads', JSON.stringify([newLead, ...leads].slice(0, 50)));
+                console.log('🚀 Hot Lead Captured:', newLead);
+            }
+
             // AI Voice Synthesis
-            const utterance = new SpeechSynthesisUtterance(botReply);
-            utterance.rate = 1.1;
-            utterance.pitch = 0.9; // Slightly lower for high-tech feel
-            window.speechSynthesis.speak(utterance);
+            if (data.ai?.voice !== 'Disabled') {
+                const utterance = new SpeechSynthesisUtterance(botReply);
+                utterance.rate = 1.1;
+                utterance.pitch = 0.9;
+                window.speechSynthesis.speak(utterance);
+            }
 
         } catch (error) {
             setMessages(prev => [...prev, { text: "My connection to the nebula is weak. Try again later!", isBot: true }]);

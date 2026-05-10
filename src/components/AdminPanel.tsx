@@ -209,6 +209,13 @@ const AdminPanel = () => {
                         <Users size={18} className={activeTab === 'referralhub' ? 'text-primary' : 'text-white/40'} />
                         Referral Hub
                     </button>
+                    <button
+                        onClick={() => setActiveTab('intelligence')}
+                        className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 text-sm font-bold ${activeTab === 'intelligence' ? 'bg-primary/10 text-primary border border-primary/20' : 'text-white/60 hover:text-white hover:bg-white/5 border border-transparent'}`}
+                    >
+                        <Activity size={18} className={activeTab === 'intelligence' ? 'text-primary' : 'text-white/40'} />
+                        Intelligence Hub
+                    </button>
                 </div>
 
                 <div className="p-4 border-t border-white/5">
@@ -855,6 +862,54 @@ const AdminPanel = () => {
                                 <button onClick={() => setLocalReferrals([{id: `REF-${Math.floor(Math.random()*9000)+1000}`, title:'', company:'', description:''}, ...localReferrals])} className="w-full py-4 border-2 border-dashed border-white/10 rounded-2xl text-sm font-bold tracking-widest text-white/40 hover:text-secondary hover:border-secondary/50 hover:bg-secondary/5 transition-all flex justify-center items-center gap-2 uppercase">
                                     <Plus size={18} /> Establish New Referral Link
                                 </button>
+                            </div>
+                        )}
+
+                        {activeTab === 'intelligence' && (
+                            <div className="space-y-8">
+                                <div className="bg-primary/5 border border-primary/20 rounded-2xl p-6 flex items-start gap-4">
+                                    <Activity size={24} className="text-primary mt-1" />
+                                    <div>
+                                        <h3 className="text-lg font-bold text-white mb-1 tracking-wide">Career Intelligence Feed</h3>
+                                        <p className="text-sm text-white/50 leading-relaxed font-light">Real-time tracking of AI Navigator interactions. High-intent messages from recruiters are automatically flagged as "Hot Leads".</p>
+                                    </div>
+                                </div>
+
+                                <div className="space-y-4">
+                                    {JSON.parse(localStorage.getItem('recruiter_leads') || '[]').length === 0 ? (
+                                        <div className="text-center py-20 border-2 border-dashed border-white/5 rounded-3xl">
+                                            <p className="text-white/20 font-mono text-sm uppercase tracking-widest">No active leads detected in the nebula</p>
+                                        </div>
+                                    ) : (
+                                        JSON.parse(localStorage.getItem('recruiter_leads') || '[]').map((lead: any) => (
+                                            <div key={lead.id} className="p-6 bg-white/5 border border-white/10 rounded-2xl flex items-start justify-between gap-6 group hover:border-primary/30 transition-all">
+                                                <div className="space-y-2">
+                                                    <div className="flex items-center gap-3">
+                                                        <span className="px-2 py-1 bg-primary/20 text-primary text-[10px] font-bold rounded uppercase tracking-tighter">Hot Lead</span>
+                                                        <span className="text-[10px] text-white/40 font-mono">{new Date(lead.timestamp).toLocaleString()}</span>
+                                                    </div>
+                                                    <p className="text-sm text-white/80 font-medium italic">"{lead.message}"</p>
+                                                </div>
+                                                <div className="text-right">
+                                                    <div className="text-[10px] text-primary font-mono uppercase tracking-widest font-bold mb-1">Status: Active</div>
+                                                    <div className="text-[10px] text-white/30 font-mono">ID: {lead.id}</div>
+                                                </div>
+                                            </div>
+                                        ))
+                                    )}
+                                </div>
+
+                                {JSON.parse(localStorage.getItem('recruiter_leads') || '[]').length > 0 && (
+                                    <button 
+                                        onClick={() => {
+                                            localStorage.removeItem('recruiter_leads');
+                                            window.location.reload();
+                                        }}
+                                        className="w-full py-4 border border-white/5 text-white/40 hover:text-red-400 hover:bg-red-500/5 transition-all rounded-2xl text-xs font-mono uppercase tracking-widest"
+                                    >
+                                        Clear Intelligence Database
+                                    </button>
+                                )}
                             </div>
                         )}
 
