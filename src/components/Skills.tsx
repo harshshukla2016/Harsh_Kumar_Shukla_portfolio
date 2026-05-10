@@ -6,11 +6,13 @@ import * as THREE from 'three';
 import { usePortfolio } from '../context/PortfolioContext';
 
 const SkillStar = ({ name, proficiency, position, color }: any) => {
-    const meshRef = useRef<THREE.Mesh>(null!);
+    const meshRef = useRef<THREE.Mesh>(null);
+    const initialY = position[1];
     
     useFrame((state) => {
+        if (!meshRef.current) return;
         const t = state.clock.getElapsedTime();
-        meshRef.current.position.y += Math.sin(t + position[0]) * 0.002;
+        meshRef.current.position.y = initialY + Math.sin(t + position[0]) * 0.2;
     });
 
     return (
