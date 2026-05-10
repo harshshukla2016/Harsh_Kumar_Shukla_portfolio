@@ -142,6 +142,23 @@ const ChatBot = () => {
                 console.log('🚀 Hot Lead Captured:', newLead);
             }
 
+            // AI Theme Switching (Dynamic UI Control)
+            if (lowerMsg.includes('theme') || lowerMsg.includes('color') || lowerMsg.includes('aura') || lowerMsg.includes('mode')) {
+                if (lowerMsg.includes('cyan') || lowerMsg.includes('cyber') || lowerMsg.includes('blue')) {
+                    setTheme('cyan');
+                    console.log('🌌 Aura Synced: Cyber Mode');
+                } else if (lowerMsg.includes('emerald') || lowerMsg.includes('matrix') || lowerMsg.includes('green')) {
+                    setTheme('emerald');
+                    console.log('🌌 Aura Synced: Matrix Mode');
+                } else if (lowerMsg.includes('amber') || lowerMsg.includes('solar') || lowerMsg.includes('gold') || lowerMsg.includes('yellow')) {
+                    setTheme('amber');
+                    console.log('🌌 Aura Synced: Solar Mode');
+                } else if (lowerMsg.includes('ruby') || lowerMsg.includes('red') || lowerMsg.includes('fire')) {
+                    setTheme('ruby');
+                    console.log('🌌 Aura Synced: Ruby Mode');
+                }
+            }
+
             // AI Voice Synthesis
             if (data.ai?.voice !== 'Disabled') {
                 const utterance = new SpeechSynthesisUtterance(botReply);

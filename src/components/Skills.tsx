@@ -32,7 +32,6 @@ const SkillStar = ({ name, proficiency, position, color }: any) => {
                 position={[0, -0.8, 0]}
                 fontSize={0.25}
                 color="white"
-                font="/fonts/Inter-Bold.woff"
                 anchorX="center"
             >
                 {name}
@@ -72,24 +71,26 @@ const SkillConstellation = () => {
 
     return (
         <div className="h-[500px] md:h-[600px] w-full relative bg-black/40 rounded-[3rem] border border-white/5 overflow-hidden group shadow-2xl">
-            <Canvas camera={{ position: [0, 0, 12] }}>
-                <ambientLight intensity={0.5} />
-                <pointLight position={[10, 10, 10]} intensity={1.5} color={currentColor} />
-                <Stars radius={100} depth={50} count={3000} factor={4} saturation={0} fade speed={1} />
-                <Sparkles count={150} scale={10} size={2} speed={0.5} color={currentColor} />
-                
-                {allSkills.map((skill, i) => (
-                    <SkillStar 
-                        key={`${theme}-${i}`} 
-                        name={skill.name} 
-                        proficiency={skill.prof} 
-                        position={skill.position} 
-                        color={currentColor} 
-                    />
-                ))}
-            </Canvas>
+            <React.Suspense fallback={<div className="absolute inset-0 flex items-center justify-center text-primary font-mono text-xs animate-pulse">Initializing Constellation...</div>}>
+                <Canvas camera={{ position: [0, 0, 12] }}>
+                    <ambientLight intensity={0.5} />
+                    <pointLight position={[10, 10, 10]} intensity={1.5} color={currentColor} />
+                    <Stars radius={100} depth={50} count={3000} factor={4} saturation={0} fade speed={1} />
+                    <Sparkles count={150} scale={10} size={2} speed={0.5} color={currentColor} />
+                    
+                    {allSkills.map((skill, i) => (
+                        <SkillStar 
+                            key={`${theme}-${i}`} 
+                            name={skill.name} 
+                            proficiency={skill.prof} 
+                            position={skill.position} 
+                            color={currentColor} 
+                        />
+                    ))}
+                </Canvas>
+            </React.Suspense>
             
-            <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,_transparent_0%,_black_90%)]"></div>
+            <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,_transparent_0%,_black_70%)] opacity-60"></div>
             <div className="absolute bottom-8 left-8">
                 <p className="text-[10px] font-mono text-primary font-bold uppercase tracking-[0.3em] mb-1">Navigation Active</p>
                 <p className="text-white/20 text-[9px] font-mono uppercase">Drag to explore the knowledge nebula</p>
