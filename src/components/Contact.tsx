@@ -55,25 +55,25 @@ const Contact = () => {
                         </p>
 
                         <div className="space-y-6">
-                            <a href="mailto:harshshukla2016@gmail.com" className="flex items-center gap-4 text-gray-300 hover:text-primary transition-colors group">
+                             <a href="mailto:harshshukla2016@gmail.com" aria-label="Send email to harshshukla2016@gmail.com" className="flex items-center gap-4 text-gray-300 hover:text-primary transition-colors group">
                                 <div className="p-3 bg-white/5 rounded-full group-hover:bg-primary/20 transition-colors">
                                     <Mail size={24} />
                                 </div>
                                 <span className="text-lg">harshshukla2016@gmail.com</span>
                             </a>
-                            <a href="tel:+919569808478" className="flex items-center gap-4 text-gray-300 hover:text-secondary transition-colors group">
+                            <a href="tel:+919569808478" aria-label="Call +91 9569808478" className="flex items-center gap-4 text-gray-300 hover:text-secondary transition-colors group">
                                 <div className="p-3 bg-white/5 rounded-full group-hover:bg-secondary/20 transition-colors">
                                     <Phone size={24} />
                                 </div>
                                 <span className="text-lg">+91 9569808478</span>
                             </a>
-                            <a href="https://linkedin.com/in/harsh-kumar-shukla-a42aa4138" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-gray-300 hover:text-blue-500 transition-colors group">
+                            <a href="https://linkedin.com/in/harsh-kumar-shukla-a42aa4138" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn Profile" className="flex items-center gap-4 text-gray-300 hover:text-blue-500 transition-colors group">
                                 <div className="p-3 bg-white/5 rounded-full group-hover:bg-blue-500/20 transition-colors">
                                     <Linkedin size={24} />
                                 </div>
                                 <span className="text-lg">LinkedIn Profile</span>
                             </a>
-                            <a href="https://github.com/harshshukla2016" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-gray-300 hover:text-white transition-colors group">
+                            <a href="https://github.com/harshshukla2016" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub Profile" className="flex items-center gap-4 text-gray-300 hover:text-white transition-colors group">
                                 <div className="p-3 bg-white/5 rounded-full group-hover:bg-white/20 transition-colors">
                                     <Github size={24} />
                                 </div>
@@ -95,6 +95,7 @@ const Contact = () => {
                                 href="https://calendar.google.com/calendar/u/0/r" 
                                 target="_blank" 
                                 rel="noopener noreferrer"
+                                aria-label="Open Google Calendar to check availability"
                                 className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white rounded-lg font-bold text-sm hover:bg-blue-500 transition-colors"
                             >
                                 Open Calendar <ExternalLink size={14} />

@@ -71,10 +71,10 @@ const Navbar = () => {
                         </Link>
                     ))}
                     <div className="flex items-center space-x-4 pl-4 border-l border-gray-700">
-                        <a href="https://github.com/harshshukla2016" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors hover:scale-110 transform">
+                        <a href="https://github.com/harshshukla2016" target="_blank" rel="noopener noreferrer" aria-label="Visit Harsh's GitHub Profile" className="text-gray-300 hover:text-white transition-colors hover:scale-110 transform">
                             <Github size={20} />
                         </a>
-                        <a href="https://linkedin.com/in/harsh-kumar-shukla-a42aa4138" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors hover:scale-110 transform">
+                        <a href="https://linkedin.com/in/harsh-kumar-shukla-a42aa4138" target="_blank" rel="noopener noreferrer" aria-label="Visit Harsh's LinkedIn Profile" className="text-gray-300 hover:text-white transition-colors hover:scale-110 transform">
                             <Linkedin size={20} />
                         </a>
                     </div>
@@ -82,7 +82,11 @@ const Navbar = () => {
 
                 {/* Mobile Menu Button - Show on LG and below, aligned right */}
                 <div className="lg:hidden flex items-center ml-auto">
-                    <button onClick={() => setIsOpen(!isOpen)} className="text-white focus:outline-none hover:text-primary transition-colors p-2 z-50 relative">
+                    <button 
+                        onClick={() => setIsOpen(!isOpen)} 
+                        aria-label={isOpen ? "Close menu" : "Open menu"}
+                        className="text-white focus:outline-none hover:text-primary transition-colors p-2 z-50 relative"
+                    >
                         {isOpen ? <X size={24} /> : <Menu size={24} />}
                     </button>
                 </div>

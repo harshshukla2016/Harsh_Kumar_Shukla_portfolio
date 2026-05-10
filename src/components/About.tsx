@@ -35,7 +35,7 @@ const About = () => {
                             <div className="glass p-4 rounded-2xl border border-white/10 bg-black/40">
                                 <img
                                     src={`https://github-readme-stats.vercel.app/api?username=${data.global.github}&show_icons=true&theme=tokyonight&hide_border=true&bg_color=00000000`}
-                                    alt="GitHub Stats"
+                                    alt={`GitHub statistics for ${data.global.github} showing language usage and contributions`}
                                     className="w-full h-auto"
                                 />
                             </div>
