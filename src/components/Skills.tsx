@@ -1,36 +1,106 @@
-import React from 'react';
+import React, { useRef, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { Code, Database, Server, PenTool, Users, Clock, Terminal, Cpu } from 'lucide-react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { Float, Stars, Text, Sparkles } from '@react-three/drei';
+import * as THREE from 'three';
 import { usePortfolio } from '../context/PortfolioContext';
 
-const Skills = () => {
-    const { data } = usePortfolio();
-
-    const skillsData = [
-        {
-            category: 'Frontend & UI',
-            icon: <Code className="w-8 h-8 text-primary" />,
-            items: data.skills.frontend.split(',').map((s: string) => s.trim()).filter(Boolean),
-        },
-        {
-            category: 'Backend & Tools',
-            icon: <Terminal className="w-8 h-8 text-secondary" />,
-            items: data.skills.backend.split(',').map((s: string) => s.trim()).filter(Boolean),
-        },
-        {
-            category: 'SAP Expertise',
-            icon: <Database className="w-8 h-8 text-accent" />,
-            items: data.skills.sap.split(',').map((s: string) => s.trim()).filter(Boolean),
-        },
-        {
-            category: 'Soft Skills',
-            icon: <Users className="w-8 h-8 text-green-400" />,
-            items: ['Leadership', 'Time Management', 'Problem Solving', 'Teamwork', 'Communication'],
-        },
-    ];
+const SkillStar = ({ name, proficiency, position, color }: any) => {
+    const meshRef = useRef<THREE.Mesh>(null!);
+    
+    useFrame((state) => {
+        const t = state.clock.getElapsedTime();
+        meshRef.current.position.y += Math.sin(t + position[0]) * 0.002;
+    });
 
     return (
-        <section id="skills" className="py-20 bg-surface text-gray-100 relative overflow-hidden">
+        <group position={position}>
+            <Float speed={2} rotationIntensity={1} floatIntensity={2}>
+                <mesh ref={meshRef}>
+                    <icosahedronGeometry args={[proficiency / 10, 1]} />
+                    <meshStandardMaterial 
+                        color={color} 
+                        emissive={color} 
+                        emissiveIntensity={2} 
+                        wireframe 
+                        transparent 
+                        opacity={0.6} 
+                    />
+                </mesh>
+            </Float>
+            <Text
+                position={[0, -0.8, 0]}
+                fontSize={0.25}
+                color="white"
+                font="/fonts/Inter-Bold.woff"
+                anchorX="center"
+            >
+                {name}
+            </Text>
+        </group>
+    );
+};
+
+const SkillConstellation = () => {
+    const { data, theme } = usePortfolio();
+    
+    const themeColors: Record<string, string> = {
+        cyan: "#00f3ff",
+        magenta: "#ff00ff",
+        amber: "#f59e0b",
+        emerald: "#10b981",
+        ruby: "#ef4444"
+    };
+    const currentColor = themeColors[theme] || themeColors.cyan;
+
+    const allSkills = useMemo(() => {
+        const skills = [
+            ...(data.skills.frontend || '').split(',').map((s: string) => ({ name: s.trim(), prof: 8 })),
+            ...(data.skills.backend || '').split(',').map((s: string) => ({ name: s.trim(), prof: 7 })),
+            ...(data.skills.sap || '').split(',').map((s: string) => ({ name: s.trim(), prof: 9 })),
+        ].filter(s => s.name);
+
+        return skills.map((s, i) => ({
+            ...s,
+            position: [
+                (Math.random() - 0.5) * 12,
+                (Math.random() - 0.5) * 8,
+                (Math.random() - 0.5) * 4
+            ] as [number, number, number]
+        }));
+    }, [data.skills]);
+
+    return (
+        <div className="h-[600px] w-full relative bg-black/40 rounded-[3rem] border border-white/5 overflow-hidden group">
+            <Canvas camera={{ position: [0, 0, 10] }}>
+                <ambientLight intensity={0.5} />
+                <pointLight position={[10, 10, 10]} intensity={1} color={currentColor} />
+                <Stars radius={100} depth={50} count={2000} factor={4} saturation={0} fade speed={1} />
+                <Sparkles count={100} scale={10} size={2} speed={0.4} color={currentColor} />
+                
+                {allSkills.map((skill, i) => (
+                    <SkillStar 
+                        key={i} 
+                        name={skill.name} 
+                        proficiency={skill.prof} 
+                        position={skill.position} 
+                        color={currentColor} 
+                    />
+                ))}
+            </Canvas>
+            
+            <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,_transparent_0%,_black_90%)]"></div>
+            <div className="absolute bottom-8 left-8">
+                <p className="text-[10px] font-mono text-primary font-bold uppercase tracking-[0.3em] mb-1">Navigation Active</p>
+                <p className="text-white/20 text-[9px] font-mono uppercase">Drag to explore the knowledge nebula</p>
+            </div>
+        </div>
+    );
+};
+
+const Skills = () => {
+    return (
+        <section id="skills" className="py-24 bg-black relative">
             <div className="container mx-auto px-6">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -38,61 +108,14 @@ const Skills = () => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-4xl font-display font-bold mb-4 neon-text-cyan">Technical Arsenal</h2>
-                    <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+                    <h2 className="text-4xl font-display font-bold mb-4 text-gradient">Skill Constellation</h2>
+                    <div className="w-24 h-1 bg-primary mx-auto rounded-full mb-6"></div>
+                    <p className="text-white/40 max-w-xl mx-auto text-sm font-light leading-relaxed font-mono uppercase tracking-widest">
+                        Interactive Neural Mapping of Technical Expertise
+                    </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {skillsData.map((skillGroup, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                            className="glass p-6 rounded-xl hover:bg-white/5 transition-colors duration-300 border border-gray-800 flex flex-col items-center text-center group hover:neon-border-cyan"
-                        >
-                            <div className="mb-4 p-4 bg-white/5 rounded-full group-hover:scale-110 transition-transform duration-300 ring-1 ring-white/10">
-                                {skillGroup.icon}
-                            </div>
-                            <h3 className="text-xl font-bold font-display mb-4 text-white group-hover:text-primary transition-colors">{skillGroup.category}</h3>
-                            <div className="flex flex-wrap justify-center gap-2">
-                                {skillGroup.items.map((item: string, i: number) => (
-                                    <span
-                                        key={i}
-                                        className="bg-white/5 text-gray-300 text-xs font-mono px-3 py-1 rounded-full border border-white/10 hover:border-primary hover:text-primary transition-colors cursor-default"
-                                    >
-                                        {item}
-                                    </span>
-                                ))}
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
-
-                <div className="mt-20 overflow-hidden relative">
-                    <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-surface to-transparent z-10"></div>
-                    <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-surface to-transparent z-10"></div>
-
-                    <motion.div
-                        className="flex space-x-12 whitespace-nowrap"
-                        animate={{ x: [0, -1000] }}
-                        transition={{
-                            repeat: Infinity,
-                            duration: 20,
-                            ease: "linear"
-                        }}
-                    >
-                        {[...skillsData, ...skillsData, ...skillsData].flatMap((group, groupIndex) =>
-                            group.items.map((item: string, itemIndex: number) => (
-                                <div key={`${groupIndex}-${itemIndex}`} className="flex items-center space-x-2 text-gray-400 opacity-50 hover:opacity-100 transition-opacity">
-                                    <span className="text-xl font-display font-bold">{item}</span>
-                                    <span className="text-primary">•</span>
-                                </div>
-                            ))
-                        )}
-                    </motion.div>
-                </div>
+                <SkillConstellation />
             </div>
         </section>
     );

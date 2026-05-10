@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageSquare, Send, X, Bot, User, Loader2, Mic, MicOff } from 'lucide-react';
+import { Send, X, MessageSquare, Bot, Sparkles, User, Mic, MicOff } from 'lucide-react';
 import { usePortfolio } from '../context/PortfolioContext';
 
 // We'll reuse the AI service logic but adapt it for chat
@@ -59,6 +59,15 @@ const ChatBot = () => {
 
         // Navigation & Theme check
         const lowerMsg = userMsg.toLowerCase();
+        
+        // Voice Command Shortcuts (Jarvis Mode)
+        if (lowerMsg.includes('go to projects')) { window.location.hash = '#projects'; }
+        if (lowerMsg.includes('switch theme') || lowerMsg.includes('change theme')) { 
+            const themes = ['cyan', 'emerald', 'amber', 'magenta'];
+            const currentIdx = themes.indexOf(data.theme || 'cyan');
+            setTheme(themes[(currentIdx + 1) % themes.length]);
+        }
+
         if (lowerMsg.includes('sap')) setTheme('amber');
         if (lowerMsg.includes('ai') || lowerMsg.includes('machine learning')) setTheme('magenta');
         if (lowerMsg.includes('frontend') || lowerMsg.includes('react')) setTheme('cyan');
@@ -212,23 +221,27 @@ const ChatBot = () => {
                         {/* Input */}
                         <form onSubmit={(e) => handleSend(e)} className="p-4 border-t border-white/10 flex gap-2 bg-black/40">
                             <button 
-                                type="button"
                                 onClick={startListening}
-                                className={`p-2 rounded-full transition-all ${isListening ? 'bg-red-500/20 text-red-500 animate-pulse' : 'bg-white/5 text-white/40 hover:text-white'}`}
+                                className={`p-3 rounded-xl transition-all ${isListening ? 'bg-red-500/20 text-red-500 animate-pulse' : 'bg-white/5 text-white/40 hover:text-primary hover:bg-primary/10'}`}
                             >
-                                {isListening ? <MicOff size={18} /> : <Mic size={18} />}
+                                <Mic size={20} />
                             </button>
                             <input
                                 type="text"
                                 value={input}
                                 onChange={(e) => setInput(e.target.value)}
-                                placeholder="Type or use voice..."
-                                className="flex-1 bg-white/5 text-white text-sm rounded-xl px-4 py-2.5 focus:outline-none focus:ring-1 focus:ring-primary/50 transition-all"
+                                onKeyPress={(e) => e.key === 'Enter' && handleSend()}
+                                placeholder="Command the system..."
+                                className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-white placeholder:text-white/20 focus:outline-none focus:border-primary transition-all text-sm"
                             />
-                            <button type="submit" className="p-2.5 bg-primary text-black rounded-xl hover:scale-105 transition-all">
-                                <Send size={18} />
+                            <button
+                                onClick={() => handleSend()}
+                                disabled={isTyping}
+                                className="p-3 bg-primary text-black rounded-xl hover:scale-105 transition-all shadow-[0_0_15px_rgba(0,243,255,0.3)]"
+                            >
+                                <Send size={20} />
                             </button>
-                        </form>
+                        </div>
                     </motion.div>
                 )}
             </AnimatePresence>

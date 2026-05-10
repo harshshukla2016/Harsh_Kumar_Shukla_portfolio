@@ -42,7 +42,8 @@ class ErrorBoundary extends Component<
   }
 }
 
-import { usePortfolio } from './context/PortfolioContext';
+import CodeRain from './components/CodeRain';
+import SAPExplorer from './components/SAPExplorer';
 
 function PortfolioContent() {
   const [loading, setLoading] = useState(true);
@@ -53,9 +54,10 @@ function PortfolioContent() {
     if (window.location.hash) {
       window.history.replaceState(null, '', window.location.pathname);
     }
-    const timer = setTimeout(() => setLoading(false), 1000);
+    const timer = setTimeout(() => setLoading(false), 1500); // Slightly longer for smoother loading
     return () => clearTimeout(timer);
   }, []);
+
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-black text-primary">
@@ -66,11 +68,13 @@ function PortfolioContent() {
 
   return (
     <div className={`bg-black min-h-screen text-white overflow-x-hidden selection:bg-primary selection:text-black transition-colors duration-1000 theme-${theme}`}>
+      <CodeRain />
       <SEO />
       <Navbar />
       <ErrorBoundary><Hero /></ErrorBoundary>
       <ErrorBoundary><About /></ErrorBoundary>
       <ErrorBoundary><Experience /></ErrorBoundary>
+      <ErrorBoundary><SAPExplorer /></ErrorBoundary>
       <ErrorBoundary><Skills /></ErrorBoundary>
       <ErrorBoundary><Opportunities /></ErrorBoundary>
       <ErrorBoundary><Projects /></ErrorBoundary>
