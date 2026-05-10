@@ -1,7 +1,19 @@
 import React, { useEffect, useRef } from 'react';
+import { usePortfolio } from '../context/PortfolioContext';
 
 const CodeRain = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
+
+    const { theme } = usePortfolio();
+
+    const themeColors: Record<string, string> = {
+        cyan: "#00f3ff",
+        magenta: "#ff00ff",
+        amber: "#f59e0b",
+        emerald: "#10b981",
+        ruby: "#ef4444"
+    };
+    const currentColor = themeColors[theme] || themeColors.cyan;
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -32,7 +44,7 @@ const CodeRain = () => {
             ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            ctx.fillStyle = '#00f3ff'; // Default, will be tinted by theme-primary
+            ctx.fillStyle = currentColor; 
             ctx.font = fontSize + 'px monospace';
 
             for (let i = 0; i < drops.length; i++) {

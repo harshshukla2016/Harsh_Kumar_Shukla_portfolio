@@ -71,16 +71,16 @@ const SkillConstellation = () => {
     }, [data.skills]);
 
     return (
-        <div className="h-[600px] w-full relative bg-black/40 rounded-[3rem] border border-white/5 overflow-hidden group">
-            <Canvas camera={{ position: [0, 0, 10] }}>
+        <div className="h-[500px] md:h-[600px] w-full relative bg-black/40 rounded-[3rem] border border-white/5 overflow-hidden group shadow-2xl">
+            <Canvas camera={{ position: [0, 0, 12] }}>
                 <ambientLight intensity={0.5} />
-                <pointLight position={[10, 10, 10]} intensity={1} color={currentColor} />
-                <Stars radius={100} depth={50} count={2000} factor={4} saturation={0} fade speed={1} />
-                <Sparkles count={100} scale={10} size={2} speed={0.4} color={currentColor} />
+                <pointLight position={[10, 10, 10]} intensity={1.5} color={currentColor} />
+                <Stars radius={100} depth={50} count={3000} factor={4} saturation={0} fade speed={1} />
+                <Sparkles count={150} scale={10} size={2} speed={0.5} color={currentColor} />
                 
                 {allSkills.map((skill, i) => (
                     <SkillStar 
-                        key={i} 
+                        key={`${theme}-${i}`} 
                         name={skill.name} 
                         proficiency={skill.prof} 
                         position={skill.position} 
