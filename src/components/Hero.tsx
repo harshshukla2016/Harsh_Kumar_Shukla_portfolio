@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas, useFrame, ThreeEvent } from '@react-three/fiber';
 import { Stars, Sparkles, Float } from '@react-three/drei';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import * as THREE from 'three';
 import profileImg from '../assets/profile_transparent.png';
 import resumePdf from '../assets/Harsh_Kumar_Shukla_Resume_fresher.pdf';
@@ -56,7 +56,7 @@ const Explosion = ({ position, onComplete }: { position: THREE.Vector3, onComple
 const InteractiveStarField = () => {
     const [explosions, setExplosions] = useState<{ id: number; position: THREE.Vector3 }[]>([]);
 
-    const handleClick = (e: THREE.ThreeEvent<MouseEvent>) => {
+    const handleClick = (e: ThreeEvent<MouseEvent>) => {
         e.stopPropagation();
         setExplosions(prev => [...prev, { id: Date.now(), position: e.point }]);
     };

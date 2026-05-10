@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Github, Loader2, X, ExternalLink, Globe } from 'lucide-react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Stars, Sparkles, Float } from '@react-three/drei';
+import { Stars, Sparkles, Float, Text } from '@react-three/drei';
 import * as THREE from 'three';
 import { useRef } from 'react';
 import ProjectCard, { type GitHubRepo } from './ProjectCard';
@@ -250,8 +250,6 @@ const Projects = () => {
         </section>
     );
 };
-
-import { Stars, Sparkles, Float, Text } from '@react-three/drei';
 
 const HologramFrame = ({ name, color, homepage }: any) => {
     const meshRef = useRef<THREE.Mesh>(null);

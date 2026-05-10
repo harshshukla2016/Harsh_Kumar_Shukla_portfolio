@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, X, MessageSquare, Bot, Sparkles, User, Mic, MicOff } from 'lucide-react';
+import { Send, X, MessageSquare, Bot, Sparkles, User, Mic, MicOff, Loader2 } from 'lucide-react';
 import { usePortfolio } from '../context/PortfolioContext';
 
 // We'll reuse the AI service logic but adapt it for chat

@@ -42,6 +42,9 @@ class ErrorBoundary extends Component<
   }
 }
 
+import { usePortfolio } from './context/PortfolioContext';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X, Palette } from 'lucide-react';
 import CodeRain from './components/CodeRain';
 import SAPExplorer from './components/SAPExplorer';
 
